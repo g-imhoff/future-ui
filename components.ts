@@ -33,12 +33,15 @@ export interface ComponentsProps {
   className?: string; 
 
   radius?: "full" | "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
-  shadow?: "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
+  shadow?: {
+    size?: "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
+    color?: "default" | "primary" | "secondary";
+  }
 
   key?: string; 
 }
 
-export function getRadius(def: string, radius?: string) {
+export function getRadius(radius?: string) : string {
   if (radius) {
     switch (radius) {
       case "full":
@@ -60,34 +63,65 @@ export function getRadius(def: string, radius?: string) {
       case "none": 
         return "rounded-none";
       default: 
-        return def;
+        return "rounded";
     }
   } else {
-    return def;
+    return "rounded";
   }
 }
 
-export function getShadow(def: string, shadow?: string) {
+export function getShadow(shadow?: string, color?: string) : string {
+  let shadowColor: string = "";
+  let shadowSize: string = "";
+
+  if (color) {
+    switch (color) {
+      case "default": 
+        shadowColor = "dark:shadow-white/10";
+        break;
+      case "primary": 
+        shadowColor = "shadow-primary-800/10 dark:shadow-primary-200/10"
+        break;
+      case "secondary": 
+        shadowColor = "shadow-secondary-800/10 dark:shadow-secondary-200/10"
+        break;
+      default: 
+        shadowColor = "dark:shadow-white/10";
+        break;
+    }
+  } else {
+    shadowColor = "dark:shadow-white/10";
+  }
+
   if (shadow) {
     switch (shadow) {
       case "2xl":
-        return "shadow-2xl";
+        shadowSize = "shadow-2xl";
+        break;
       case "xl": 
-        return "shadow-xl";
+        shadowSize = "shadow-xl";
+        break;
       case "lg": 
-        return "shadow-lg";
+        shadowSize = "shadow-lg";
+        break;
       case "md": 
-        return "shadow-md";
+        shadowSize = "shadow-md";
+        break;
       case "base": 
-        return "shadow";
+        shadowSize = "shadow";
+        break;
       case "sm": 
-        return "shadow-sm";
+        shadowSize = "shadow-sm";
+        break;
       case "none": 
         return "shadow-none";
       default: 
-        return def;
+        shadowSize = "shadow";
+        break;
     }
   } else {
-    return def;
+    shadowSize = "shadow";
   }
+
+  return shadowColor + " " + shadowSize;
 }
