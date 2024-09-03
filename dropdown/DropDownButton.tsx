@@ -26,7 +26,7 @@ export default function DropDownButton(props: DropDownButtonProps) {
   }
 
   return (
-    <div className="w-full h-auto flex justify-center items-center">
+    <div className="w-full h-fit flex justify-center items-center">
       <Button
         text={props.text}
         ariaLabel={props.ariaLabel}

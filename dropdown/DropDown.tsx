@@ -1,6 +1,6 @@
 export default function DropDown({ children }: { children: React.ReactNode }) {
   return (
-    <div id="DropDown" className="w-auto h-auto block">
+    <div id="DropDown" className="w-fit h-fit block">
       {children}
     </div>
   );
