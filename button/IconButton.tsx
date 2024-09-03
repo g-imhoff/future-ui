@@ -40,7 +40,7 @@ function getIconButtonStyle<T>(props: IconButtonProps<T>): string {
   let className: string = props.className !== undefined ? props.className : "";
 
   return (
-    "flex justify-center items-center aspect-square w-auto " +
+    "flex justify-center items-center aspect-square w-fit " +
     size +
     " " +
     radius +

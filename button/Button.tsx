@@ -51,22 +51,25 @@ export interface ButtonProps<T> extends ComponentsProps {
 }
 
 function getButtonSize(size?: string): string {
+  let finalSize: string = ""
   if (size) {
     switch (size) {
       case "xl":
-        return "text-xl h-14 px-4";
+        finalSize = "text-xl h-14 px-4";
       case "lg":
-        return "text-lg h-12 px-4";
+        finalSize = "text-lg h-12 px-4";
       case "base":
-        return "w-auto h-10 px-4";
+        finalSize = "h-10 px-4";
       case "sm":
-        return "text-sm h-8 px-3";
+        finalSize = "text-sm h-8 px-3";
       default:
-        return "w-auto h-10 px-4";
+        finalSize = "h-10 px-4";
     }
   } else {
-    return "w-auto h-10 px-4";
+    finalSize = "h-10 px-4";
   }
+
+  return "w-fit " + finalSize
 }
 
 export function getButtonColor(color?: string): string {
