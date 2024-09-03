@@ -9,8 +9,8 @@ interface DropDownContentProps extends ComponentsProps {
   children: React.ReactNode;
 }
 
-function getDropDownItemColor(color?: string) : string {
-  let colorStyle: string = ""
+function getDropDownItemColor(color?: string): string {
+  let colorStyle: string = "";
   if (color) {
     switch (color) {
       case "default":
@@ -22,7 +22,7 @@ function getDropDownItemColor(color?: string) : string {
       case "secondary":
         colorStyle = "bg-secondary-500 hover:bg-secondary-400";
         break;
-      default: 
+      default:
         colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
         break;
     }
@@ -33,12 +33,13 @@ function getDropDownItemColor(color?: string) : string {
   return colorStyle;
 }
 
-function getDropDownContentColor(color?: string) : string {
-  let colorStyle: string = ""
+function getDropDownContentColor(color?: string): string {
+  let colorStyle: string = "";
   if (color) {
     switch (color) {
       case "default":
-        colorStyle = "bg-default-100 dark:bg-default-800 text-black dark:text-white";
+        colorStyle =
+          "bg-default-100 dark:bg-default-800 text-black dark:text-white";
         break;
       case "primary":
         colorStyle = "bg-primary-500 text-white";
@@ -46,19 +47,21 @@ function getDropDownContentColor(color?: string) : string {
       case "secondary":
         colorStyle = "bg-secondary-500 text-white";
         break;
-      default: 
-        colorStyle = "bg-default-100 dark:bg-default-800 text-black dark:text-white";
+      default:
+        colorStyle =
+          "bg-default-100 dark:bg-default-800 text-black dark:text-white";
         break;
     }
   } else {
-    colorStyle = "bg-default-100 dark:bg-default-800 text-black dark:text-white";
+    colorStyle =
+      "bg-default-100 dark:bg-default-800 text-black dark:text-white";
   }
 
   return colorStyle;
 }
 
-function getDropDownContentSize(size?: string) : string {
-  let sizeStyle: string = ""
+function getDropDownContentSize(size?: string): string {
+  let sizeStyle: string = "";
   if (size) {
     switch (size) {
       case "xl":
@@ -76,7 +79,7 @@ function getDropDownContentSize(size?: string) : string {
       case "sm":
         sizeStyle = "w-40";
         break;
-      default: 
+      default:
         sizeStyle = "w-56";
         break;
     }
@@ -87,7 +90,7 @@ function getDropDownContentSize(size?: string) : string {
   return sizeStyle;
 }
 
-function getDropDownContentStyle(props: DropDownContentProps) : string {
+function getDropDownContentStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
   const color: string = getDropDownContentColor(props.color);
@@ -96,7 +99,7 @@ function getDropDownContentStyle(props: DropDownContentProps) : string {
   return radius + " " + shadow + " " + color + " " + size;
 }
 
-function getDropDownItemStyle(props: DropDownContentProps) : string {
+function getDropDownItemStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
   const color: string = getDropDownItemColor(props.color);
 
@@ -108,13 +111,15 @@ export default function DropDownContent(props: DropDownContentProps) {
   const styleItem: string = getDropDownItemStyle(props);
 
   const itemChildren = Children.map(props.children, (child) => (
-    <li className={styleItem + " transition-colors duration-300 p-2"}>{child}</li>
+    <li className={styleItem + " transition-colors duration-300 p-2"}>
+      {child}
+    </li>
   ));
 
   return (
     <ul
       id={props.contentId}
-      className= {style + " h-auto p-2 mt-4 absolute DropDownContentHidden"}
+      className={style + " h-auto p-2 mt-4 absolute DropDownContentHidden"}
     >
       {itemChildren}
     </ul>

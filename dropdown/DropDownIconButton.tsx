@@ -1,5 +1,5 @@
 import { ShadowProps } from "../components";
-import IconButton, {IconButtonProps} from "../button/IconButton";
+import IconButton, { IconButtonProps } from "../button/IconButton";
 
 interface DropDownIconButtonProps extends IconButtonProps<void> {
   displayedId: string;
