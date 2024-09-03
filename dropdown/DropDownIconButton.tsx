@@ -1,11 +1,11 @@
-import Button, { ButtonProps } from "../button/Button";
 import { ShadowProps } from "../components";
+import IconButton, {IconButtonProps} from "../button/IconButton";
 
-interface DropDownButtonProps extends ButtonProps<void> {
+interface DropDownIconButtonProps extends IconButtonProps<void> {
   displayedId: string;
 }
 
-export default function DropDownButton(props: DropDownButtonProps) {
+export default function DropDownIconButton(props: DropDownIconButtonProps) {
   let shadowStyle: ShadowProps = {
     size: props.shadow?.size,
     color: props.shadow?.color,
@@ -27,7 +27,7 @@ export default function DropDownButton(props: DropDownButtonProps) {
 
   return (
     <div className="w-full h-auto flex justify-center items-center">
-      <Button
+      <IconButton
         text={props.text}
         ariaLabel={props.ariaLabel}
         size={props.size}
@@ -38,8 +38,9 @@ export default function DropDownButton(props: DropDownButtonProps) {
         radius={props.radius}
         shadow={shadowStyle}
         key={props.key}
+        svg={props.svg}
+        svgBlack={props.svgBlack}
       />
     </div>
   );
 }
-
