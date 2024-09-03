@@ -11,6 +11,10 @@ import { ComponentsProps, getRadius, getShadow } from "../components";
  *
  * @param {string} text - The text label displayed on the button.
  *
+ * @param {string} ariaLabel - A descriptive label for the button used by screen readers
+ * to improve accessibility. This prop is essential for providing context to visually
+ * impaired users, particularly when the button contains only an icon or non-textual content.k
+ *
  * @param {"xl" | "lg" | "base" | "sm"} [size] - The size of the button.
  * Acceptable values are:
  * - `"xl"`: Extra large
@@ -39,6 +43,7 @@ import { ComponentsProps, getRadius, getShadow } from "../components";
 
 export interface ButtonProps<T> extends ComponentsProps {
   text: string;
+  ariaLabel: string;
   size?: "xl" | "lg" | "base" | "sm";
   color?: "default" | "primary" | "secondary";
   variant?: "borderOnly";
@@ -66,22 +71,30 @@ function getButtonSize(size?: string): string {
 
 export function getButtonColor(color?: string): string {
   let finalColor: string = "";
+
   if (color) {
     switch (color) {
       case "default":
-        finalColor = "bg-default-100 hover:bg-default-200 text-black dark:bg-default-800 dark:hover:bg-default-900 dark:text-white";
+        finalColor =
+          "bg-default-100 hover:bg-default-200 text-black dark:bg-default-800 dark:hover:bg-default-700 dark:text-white";
+        break;
       case "primary":
-        finalColor = "bg-primary-500 hover:bg-primary-600 text-white";
+        finalColor = "bg-primary-500 hover:bg-primary-400 text-white";
+        break;
       case "secondary":
-        finalColor = "bg-secondary-500 hover:bg-primary-600 text-white";
+        finalColor = "bg-secondary-500 hover:bg-secondary-400 text-white";
+        break;
       default:
-        finalColor = "bg-default-100 hover:bg-default-200 text-black dark:bg-default-800 dark:hover:bg-default-900 dark:text-white";
+        finalColor =
+          "bg-default-100 hover:bg-default-200 text-black dark:bg-default-800 dark:hover:bg-default-700 dark:text-white";
+        break;
     }
   } else {
-    finalColor = "bg-default-100 hover:bg-default-200 text-black dark:bg-default-800 dark:hover:bg-default-900 dark:text-white";
+    finalColor =
+      "bg-default-100 hover:bg-default-200 text-black dark:bg-default-800 dark:hover:bg-default-700 dark:text-white";
   }
-  
-  return finalColor + " transition-colors duration-300"
+
+  return finalColor + " transition-colors duration-300";
 }
 
 export function getButtonBorder(color?: string, size?: string): string {
@@ -104,6 +117,7 @@ export function getButtonBorder(color?: string, size?: string): string {
         break;
       default:
         finalSize = "border-2";
+        break;
     }
   } else {
     finalSize = "border-2";
@@ -113,22 +127,24 @@ export function getButtonBorder(color?: string, size?: string): string {
     switch (color) {
       case "default":
         finalColor =
-          "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-900 text-black dark:text-white";
+          "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
         break;
       case "primary":
-        finalColor = "border-primary-500 hover:border-primary-600 text-primary-500";
+        finalColor =
+          "border-primary-500 hover:border-primary-400 text-primary-500";
         break;
       case "secondary":
-        finalColor = "border-secondary-500 hover:border-secondary-600 text-secondary-500";
+        finalColor =
+          "border-secondary-500 hover:border-secondary-400 text-secondary-500";
         break;
       default:
         finalColor =
-          "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-900 text-black dark:text-white";
+          "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
         break;
     }
   } else {
     finalColor =
-      "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-900 text-black dark:text-white";
+      "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
   }
 
   return (
@@ -142,7 +158,7 @@ export function getButtonBorder(color?: string, size?: string): string {
 function getButtonStyle<T>(props: ButtonProps<T>): string {
   let size: string = getButtonSize(props.size);
   let radius: string = getRadius(props.radius);
-  let shadow: string = getShadow(props.shadow?.size, props.shadow?.color);
+  let shadow: string = getShadow(props.shadow);
   let bgColor: string = "";
   if (props.variant === "borderOnly") {
     bgColor = getButtonBorder(props.color, props.size);
@@ -157,8 +173,12 @@ function getButtonStyle<T>(props: ButtonProps<T>): string {
 export default function Button<T>(props: ButtonProps<T>) {
   let style: string = getButtonStyle<T>(props);
   return (
-    <button onClick={(e) => props.onClick(e)} className={style}>
-      <p className="antialiased">{props.text}</p>
+    <button
+      aria-label={props.ariaLabel}
+      onClick={(e) => props.onClick(e)}
+      className={style}
+    >
+      <p className="subpixel-antialiased">{props.text}</p>
     </button>
   );
 }

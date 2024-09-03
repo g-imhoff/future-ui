@@ -30,7 +30,7 @@ function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
 function getIconButtonStyle<T>(props: IconButtonProps<T>): string {
   let size: string = getIconButtonSize(props.size);
   let radius: string = getRadius(props.radius);
-  let shadow: string = getShadow(props.shadow?.size, props.shadow?.color);
+  let shadow: string = getShadow(props.shadow);
   let bgColor: string = "";
   if (props.variant === "borderOnly") {
     bgColor = getButtonBorder(props.color, props.size);
@@ -84,7 +84,11 @@ export default function IconButton<T>(props: IconButtonProps<T>) {
   }
 
   return (
-    <button onClick={(e) => props.onClick(e)} className={style}>
+    <button
+      aria-label={props.ariaLabel}
+      onClick={(e) => props.onClick(e)}
+      className={style}
+    >
       {ifSvgBlackExist()}
     </button>
   );
