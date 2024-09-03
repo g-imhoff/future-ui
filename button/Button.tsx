@@ -178,7 +178,7 @@ export default function Button<T>(props: ButtonProps<T>) {
       onClick={(e) => props.onClick(e)}
       className={style}
     >
-      <p className="antialiased">{props.text}</p>
+      <p className="subpixel-antialiased">{props.text}</p>
     </button>
   );
 }
