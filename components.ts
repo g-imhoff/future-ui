@@ -71,49 +71,53 @@ export function getRadius(radius?: string): string {
   }
 }
 
-export function getShadow(shadow?: string, color?: string): string {
+export function getShadow(shadow?: ShadowProps): string {
   let shadowColor: string = "";
   let shadowSize: string = "";
 
-  if (color) {
-    switch (color) {
-      case "primary":
-        shadowColor = "shadow-primary-800/20 dark:shadow-primary-200/20";
-        break;
-      case "secondary":
-        shadowColor = "shadow-secondary-800/20 dark:shadow-secondary-200/20";
-        break;
-    }
-  } 
-  
   if (shadow) {
-    switch (shadow) {
-      case "2xl":
-        shadowSize = "shadow-2xl";
-        break;
-      case "xl":
-        shadowSize = "shadow-xl";
-        break;
-      case "lg":
-        shadowSize = "shadow-lg";
-        break;
-      case "md":
-        shadowSize = "shadow-md";
-        break;
-      case "base":
-        shadowSize = "shadow";
-        break;
-      case "sm":
-        shadowSize = "shadow-sm";
-        break;
-      case "none":
-        return "shadow-none";
-      default:
-        shadowSize = "shadow";
-        break;
+    if (shadow.color) {
+      switch (shadow.color) {
+        case "primary":
+          shadowColor = "shadow-primary-800/20 dark:shadow-primary-200/20";
+          break;
+        case "secondary":
+          shadowColor = "shadow-secondary-800/20 dark:shadow-secondary-200/20";
+          break;
+      }
+    }
+
+    if (shadow.size) {
+      switch (shadow.size) {
+        case "2xl":
+          shadowSize = "shadow-2xl";
+          break;
+        case "xl":
+          shadowSize = "shadow-xl";
+          break;
+        case "lg":
+          shadowSize = "shadow-lg";
+          break;
+        case "md":
+          shadowSize = "shadow-md";
+          break;
+        case "base":
+          shadowSize = "shadow";
+          break;
+        case "sm":
+          shadowSize = "shadow-sm";
+          break;
+        case "none":
+          return "shadow-none";
+        default:
+          shadowSize = "shadow";
+          break;
+      }
+    } else {
+      shadowSize = "shadow";
     }
   } else {
-    shadowSize = "shadow";
+    return "shadow";
   }
 
   return shadowColor + " " + shadowSize;

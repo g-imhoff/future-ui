@@ -47,7 +47,7 @@
     display: block;
     opacity: 1;
     transform: translate(-50%) scale(1);
-  } 
+  }
 }
 
 @-moz-keyframes fadeInFromNone {

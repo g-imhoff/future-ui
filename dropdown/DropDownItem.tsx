@@ -7,6 +7,8 @@ interface DropDownItem {
 
 export default function DropDownItem(props: DropDownItem) {
   return (
-    <Link href={props.href}>{props.text}</Link>
-  )
+    <Link className="antialiased flex grow w-full h-full" href={props.href}>
+      {props.text}
+    </Link>
+  );
 }
