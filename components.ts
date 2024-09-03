@@ -28,15 +28,16 @@
  * are designed with a consistent and flexible API.
  */
 
+export interface ShadowProps {
+  size?: "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
+  color?: "default" | "primary" | "secondary";
+}
 
 export interface ComponentsProps {
   className?: string; 
 
   radius?: "full" | "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
-  shadow?: {
-    size?: "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
-    color?: "default" | "primary" | "secondary";
-  }
+  shadow?: ShadowProps; 
 
   key?: string; 
 }
@@ -77,20 +78,20 @@ export function getShadow(shadow?: string, color?: string) : string {
   if (color) {
     switch (color) {
       case "default": 
-        shadowColor = "dark:shadow-white/10";
+        shadowColor = "dark:shadow-white/20";
         break;
       case "primary": 
-        shadowColor = "shadow-primary-800/10 dark:shadow-primary-200/10"
+        shadowColor = "shadow-primary-800/20 dark:shadow-primary-200/20"
         break;
       case "secondary": 
-        shadowColor = "shadow-secondary-800/10 dark:shadow-secondary-200/10"
+        shadowColor = "shadow-secondary-800/20 dark:shadow-secondary-200/20"
         break;
       default: 
-        shadowColor = "dark:shadow-white/10";
+        shadowColor = "dark:shadow-white/20";
         break;
     }
   } else {
-    shadowColor = "dark:shadow-white/10";
+    shadowColor = "dark:shadow-white/20";
   }
 
   if (shadow) {
