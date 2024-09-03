@@ -1,30 +1,30 @@
 /**
  * @interface ComponentsProps
- * 
+ *
  * This interface defines the standard set of properties (props) that can be applied
  * to all components within the UI kit. By implementing this interface, components
  * maintain consistency in styling and behavior across the entire UI kit.
- * 
+ *
  * Properties:
- * 
- * - @param {string} [className] : A string representing one or more CSS class names 
+ *
+ * - @param {string} [className] : A string representing one or more CSS class names
  *   to apply custom styles to the component.
- * 
- * - @param {string} [radius] : A string defining the border-radius of the component 
- *   for rounded corners. Acceptable values are predefined classes: "full", "3xl", 
+ *
+ * - @param {string} [radius] : A string defining the border-radius of the component
+ *   for rounded corners. Acceptable values are predefined classes: "full", "3xl",
  *   "2xl", "xl", "lg", "md", "base", "sm", "none".
- * 
- * - @param {string} [shadow] : A string representing the box-shadow property to apply 
- *   a shadow effect to the component. Acceptable values are predefined classes: 
+ *
+ * - @param {string} [shadow] : A string representing the box-shadow property to apply
+ *   a shadow effect to the component. Acceptable values are predefined classes:
  *   "2xl", "xl", "lg", "md", "base", "sm", "none".
- * 
- * - @param {string} [key] : A string or number that uniquely identifies the component 
+ *
+ * - @param {string} [key] : A string or number that uniquely identifies the component
  *   within a list of sibling elements, commonly used in React.
- * 
- * All properties are optional. If not provided, the component will apply default 
+ *
+ * All properties are optional. If not provided, the component will apply default
  * styles, typically based on a predefined design system or theme.
- * 
- * This interface serves as a blueprint for ensuring that all UI components 
+ *
+ * This interface serves as a blueprint for ensuring that all UI components
  * are designed with a consistent and flexible API.
  */
 
@@ -34,15 +34,15 @@ export interface ShadowProps {
 }
 
 export interface ComponentsProps {
-  className?: string; 
+  className?: string;
 
   radius?: "full" | "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
-  shadow?: ShadowProps; 
+  shadow?: ShadowProps;
 
-  key?: string; 
+  key?: string;
 }
 
-export function getRadius(radius?: string) : string {
+export function getRadius(radius?: string): string {
   if (radius) {
     switch (radius) {
       case "full":
@@ -51,19 +51,19 @@ export function getRadius(radius?: string) : string {
         return "rounded-3xl";
       case "2xl":
         return "rounded-2xl";
-      case "xl": 
+      case "xl":
         return "rounded-xl";
-      case "lg": 
+      case "lg":
         return "rounded-lg";
-      case "md": 
+      case "md":
         return "rounded-md";
-      case "base": 
+      case "base":
         return "rounded";
-      case "sm": 
+      case "sm":
         return "rounded-sm";
-      case "none": 
+      case "none":
         return "rounded-none";
-      default: 
+      default:
         return "rounded";
     }
   } else {
@@ -71,52 +71,44 @@ export function getRadius(radius?: string) : string {
   }
 }
 
-export function getShadow(shadow?: string, color?: string) : string {
+export function getShadow(shadow?: string, color?: string): string {
   let shadowColor: string = "";
   let shadowSize: string = "";
 
   if (color) {
     switch (color) {
-      case "default": 
-        shadowColor = "dark:shadow-white/20";
+      case "primary":
+        shadowColor = "shadow-primary-800/20 dark:shadow-primary-200/20";
         break;
-      case "primary": 
-        shadowColor = "shadow-primary-800/20 dark:shadow-primary-200/20"
-        break;
-      case "secondary": 
-        shadowColor = "shadow-secondary-800/20 dark:shadow-secondary-200/20"
-        break;
-      default: 
-        shadowColor = "dark:shadow-white/20";
+      case "secondary":
+        shadowColor = "shadow-secondary-800/20 dark:shadow-secondary-200/20";
         break;
     }
-  } else {
-    shadowColor = "dark:shadow-white/20";
-  }
-
+  } 
+  
   if (shadow) {
     switch (shadow) {
       case "2xl":
         shadowSize = "shadow-2xl";
         break;
-      case "xl": 
+      case "xl":
         shadowSize = "shadow-xl";
         break;
-      case "lg": 
+      case "lg":
         shadowSize = "shadow-lg";
         break;
-      case "md": 
+      case "md":
         shadowSize = "shadow-md";
         break;
-      case "base": 
+      case "base":
         shadowSize = "shadow";
         break;
-      case "sm": 
+      case "sm":
         shadowSize = "shadow-sm";
         break;
-      case "none": 
+      case "none":
         return "shadow-none";
-      default: 
+      default:
         shadowSize = "shadow";
         break;
     }
