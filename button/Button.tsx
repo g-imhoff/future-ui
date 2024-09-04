@@ -51,7 +51,7 @@ export interface ButtonProps<T> extends ComponentsProps {
 }
 
 function getButtonSize(size?: string): string {
-  let finalSize: string = ""
+  let finalSize: string = "";
   if (size) {
     switch (size) {
       case "xl":
@@ -69,7 +69,7 @@ function getButtonSize(size?: string): string {
     finalSize = "h-10 px-4";
   }
 
-  return "w-fit " + finalSize
+  return "w-fit " + finalSize;
 }
 
 export function getButtonColor(color?: string): string {
