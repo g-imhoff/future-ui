@@ -33,13 +33,15 @@ export interface ShadowProps {
   color?: "default" | "primary" | "secondary";
 }
 
-export interface ComponentsProps {
+export interface BasicProps {
   className?: string;
+  id?: string;
+  key?: string;
+}
 
+export interface ComponentsProps extends BasicProps {
   radius?: "full" | "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
   shadow?: ShadowProps;
-
-  key?: string;
 }
 
 export function getRadius(radius?: string): string {
