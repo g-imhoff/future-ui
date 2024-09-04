@@ -1,6 +1,6 @@
 import { ComponentsProps, getRadius, getShadow } from "../components";
-import { Children } from "react";
 import { getAutoCompleteSize } from "./AutoComplete";
+import { useState, Children, useEffect } from "react";
 import "./style.css";
 
 interface AutoCompleteContentProps extends ComponentsProps {
@@ -78,7 +78,7 @@ function getAutoCompleteItemStyle(props: AutoCompleteContentProps): string {
 
 export default function AutoCompleteContent(props: AutoCompleteContentProps) {
   const style: string = getAutoCompleteContentStyle(props);
-  const styleItem: string = getAutoCompleteItemStyle(props);
+  
   return (
     <ul
       className={

@@ -17,8 +17,9 @@ function getAutoCompleteSearchBarStyle(
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
   const bgColor: string = getAutoCompleteContentBackground(props.color);
+  const size: string = getAutoCompleteSize(props.size);
 
-  return radius + " " + shadow + " " + bgColor;
+  return radius + " " + shadow + " " + bgColor + " " + size;
 }
 
 export default function AutoCompleteSearchBar(
@@ -32,7 +33,7 @@ export default function AutoCompleteSearchBar(
       <input
         placeholder={props.placeholder}
         className={
-          "w-full h-8 px-4 mx-2 placeholder:text-sm outline-none placeholder:subpixel-antialiased " +
+          "h-8 px-4 mx-2 placeholder:text-sm outline-none placeholder:subpixel-antialiased " +
           style
         }
         value={props.value}
