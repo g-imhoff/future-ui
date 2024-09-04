@@ -25,11 +25,18 @@ function getAutoCompleteSearchBarStyle(
 export default function AutoCompleteSearchBar(
   props: AutoCompleteSearchBarProps,
 ) {
-  const style: string = getAutoCompleteSize(props.size) + " " + getAutoCompleteSearchBarStyle(props);
+  const style: string =
+    getAutoCompleteSize(props.size) +
+    " " +
+    getAutoCompleteSearchBarStyle(props);
 
   return (
-    <div className="peer flex justify-center items-center">
-      <label htmlFor=""></label>
+    <div
+      id={props.id}
+      key={props.key}
+      className="peer flex justify-center items-center"
+    >
+      <label htmlFor="AutoCompleteSearchBar"></label>
       <input
         placeholder={props.placeholder}
         className={
@@ -37,10 +44,9 @@ export default function AutoCompleteSearchBar(
           style
         }
         value={props.value}
-        onChange={e => props.setValue(e.target.value)}
+        onChange={(e) => props.setValue(e.target.value)}
         type="text"
-        name=""
-        id=""
+        name="AutoCompleteSearchBar"
       />
     </div>
   );

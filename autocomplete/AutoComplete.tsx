@@ -1,4 +1,6 @@
-interface AutoCompleteProps {
+import { BasicProps } from "../components";
+
+interface AutoCompleteProps extends BasicProps {
   children: React.ReactNode;
 }
 
@@ -33,6 +35,13 @@ export function getAutoCompleteSize(size?: string) {
 }
 
 export default function AutoComplete(props: AutoCompleteProps) {
-
-  return <div className={"w-full h-fit px-4 relative"}>{props.children}</div>;
+  return (
+    <div
+      id={props.id}
+      key={props.key}
+      className={"w-full h-fit px-4 relative " + props.className}
+    >
+      {props.children}
+    </div>
+  );
 }

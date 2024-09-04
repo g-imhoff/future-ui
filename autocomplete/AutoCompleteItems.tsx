@@ -1,28 +1,54 @@
-import { ComponentsProps, getRadius, getShadow, ShadowProps } from "../components";
+import { ComponentsProps, getRadius, ShadowProps } from "../components";
 
 interface AutoCompleteItemsProps extends ComponentsProps {
   text: string;
   color?: "default" | "primary" | "secondary";
 }
 
+function getAutoCompleteItemsColor(color?: string): string {
+  let colorStyle: string = "";
+
+  if (color) {
+    switch (color) {
+      case "default":
+        colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
+        break;
+      case "primary":
+        colorStyle = "hover:bg-primary-400";
+        break;
+      case "secondary":
+        colorStyle = "hover:bg-secondary-400";
+        break;
+      default:
+        colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
+        break;
+    }
+  } else {
+    colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
+  }
+
+  return colorStyle;
+}
+
 function getAutoCompleteItemsShadow(shadow?: ShadowProps) {
-  let color: string = ""; 
-  let size: string = ""; 
+  let color: string = "";
+  let size: string = "";
 
   if (shadow) {
     if (shadow.color) {
       switch (shadow.color) {
         case "primary":
-          color = "hover:shadow-primary-800/20 hover:dark:shadow-primary-200/20";
+          color =
+            "hover:shadow-primary-800/20 hover:dark:shadow-primary-200/20";
           break;
         case "secondary":
-          color = "hover:shadow-secondary-800/20 hover:dark:shadow-secondary-200/20";
+          color =
+            "hover:shadow-secondary-800/20 hover:dark:shadow-secondary-200/20";
           break;
       }
     } else {
-
     }
-  
+
     if (shadow.size) {
       switch (shadow.size) {
         case "2xl":
@@ -57,19 +83,29 @@ function getAutoCompleteItemsShadow(shadow?: ShadowProps) {
   return size + " " + color;
 }
 
-function getAutoCompleteItemsStyle(props: AutoCompleteItemsProps) : string {
+function getAutoCompleteItemsStyle(props: AutoCompleteItemsProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getAutoCompleteItemsShadow(props.shadow);
+  const color: string = getAutoCompleteItemsColor(props.color);
 
-  return radius + " " + shadow;
+  return radius + " " + shadow + " " + color;
 }
 
 export default function AutoCompleteItems(props: AutoCompleteItemsProps) {
   const style: string = getAutoCompleteItemsStyle(props);
 
   return (
-    <li className={"hover:bg-default-700 p-2 h-fit transition-colors duration-300 " + style}>
+    <li
+      id={props.id}
+      key={props.key}
+      className={
+        "p-2 h-fit transition-colors duration-300 " +
+        style +
+        " " +
+        props.className
+      }
+    >
       <p className="subpixel-antialiased">{props.text}</p>
     </li>
-  ) 
+  );
 }
