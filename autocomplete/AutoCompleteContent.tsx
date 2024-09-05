@@ -52,7 +52,7 @@ export default function AutoCompleteContent(props: AutoCompleteContentProps) {
       id={props.id}
       key={props.key}
       className={
-        "hidden peer-has-[:focus]:AutoCompleteContentShow h-fit absolute mt-4 p-2 " +
+        "hidden hover:AutoCompleteContentShow peer-has-[:focus]:AutoCompleteContentShow h-fit absolute mt-4 p-2 " +
         style +
         " " +
         props.className
