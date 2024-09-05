@@ -3,8 +3,8 @@
 @layer components {
   .DropDownContentHidden {
     display: none;
-    left: 50%;
     right: 50%;
+    left: 50%;
     transform: translate(-50%);
     -webkit-animation: fadeOutToNone 0.2s ease-in-out;
     -moz-animation: fadeOutToNone 0.2s ease-in-out;
@@ -14,8 +14,8 @@
 
   .DropDownContentShow {
     display: block;
-    left: 50%;
     right: 50%;
+    left: 50%;
     transform: translate(-50%);
     -webkit-animation: fadeInFromNone 0.2s ease-in-out;
     -moz-animation: fadeInFromNone 0.2s ease-in-out;
