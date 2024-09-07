@@ -2,7 +2,7 @@
 
 @layer components {
   .DropDownContentHidden {
-    display: none;
+    visibility: hidden;
     right: 50%;
     left: 50%;
     transform: translate(-50%);
@@ -13,7 +13,7 @@
   }
 
   .DropDownContentShow {
-    display: block;
+    visibility: visible;
     right: 50%;
     left: 50%;
     transform: translate(-50%);
@@ -26,25 +26,25 @@
 
 @-webkit-keyframes fadeInFromNone {
   0% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   1% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   100% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
@@ -52,25 +52,25 @@
 
 @-moz-keyframes fadeInFromNone {
   0% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   1% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   100% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
@@ -78,25 +78,25 @@
 
 @-o-keyframes fadeInFromNone {
   0% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   1% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   100% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
@@ -104,25 +104,25 @@
 
 @keyframes fadeInFromNone {
   0% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   1% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   100% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
@@ -130,25 +130,25 @@
 
 @keyframes fadeOutToNone {
   0% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   99% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   100% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
@@ -156,25 +156,25 @@
 
 @-o-keyframes fadeOutToNone {
   0% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   99% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   100% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
@@ -182,25 +182,25 @@
 
 @-moz-keyframes fadeOutToNone {
   0% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   99% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   100% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
@@ -208,25 +208,25 @@
 
 @-webkit-keyframes fadeOutToNone {
   0% {
-    display: block;
+    visibility: visible;
     opacity: 1;
     transform: translate(-50%) scale(1);
   }
 
   50% {
-    display: block;
+    visibility: visible;
     opacity: 0.5;
     transform: translate(-50%) scale(0.5);
   }
 
   99% {
-    display: block;
+    visibility: visible;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
 
   100% {
-    display: none;
+    visibility: hidden;
     opacity: 0;
     transform: translate(-50%) scale(0);
   }
