@@ -1,7 +1,7 @@
 import Button, { ButtonProps } from "../button/Button";
 import { ShadowProps } from "../components";
 
-interface DropDownButtonProps extends ButtonProps<void> {
+interface DropDownButtonProps extends ButtonProps {
   displayedId: string;
 }
 
@@ -26,7 +26,7 @@ export default function DropDownButton(props: DropDownButtonProps) {
   }
 
   return (
-    <div className="w-full h-fit flex justify-center items-center">
+    <div id={props.id} key={props.key} className={"w-full h-fit flex justify-center items-center " + props.className}>
       <Button
         text={props.text}
         ariaLabel={props.ariaLabel}

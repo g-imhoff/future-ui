@@ -30,58 +30,6 @@ function getAutoCompleteItemsColor(color?: string): string {
   return colorStyle;
 }
 
-function getAutoCompleteItemsShadow(shadow?: ShadowProps) {
-  let color: string = "";
-  let size: string = "";
-
-  if (shadow) {
-    if (shadow.color) {
-      switch (shadow.color) {
-        case "primary":
-          color =
-            "hover:shadow-primary-800/20 hover:dark:shadow-primary-200/20";
-          break;
-        case "secondary":
-          color =
-            "hover:shadow-secondary-800/20 hover:dark:shadow-secondary-200/20";
-          break;
-      }
-    } else {
-    }
-
-    if (shadow.size) {
-      switch (shadow.size) {
-        case "2xl":
-          size = "hover:shadow-2xl";
-          break;
-        case "xl":
-          size = "hover:shadow-xl";
-          break;
-        case "lg":
-          size = "hover:shadow-lg";
-          break;
-        case "md":
-          size = "hover:shadow-md";
-          break;
-        case "base":
-          size = "hover:shadow";
-          break;
-        case "sm":
-          size = "hover:shadow-sm";
-          break;
-        case "none":
-          return "shadow-none";
-        default:
-          size = "hover:shadow";
-          break;
-      }
-    } else {
-      size = "hover:shadow";
-    }
-  }
-
-  return size + " " + color;
-}
 
 function getAutoCompleteItemsStyle(props: AutoCompleteItemsProps): string {
   const radius: string = getRadius(props.radius);

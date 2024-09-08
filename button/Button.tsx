@@ -41,13 +41,13 @@ import { ComponentsProps, getRadius, getShadow } from "../components";
  * while adhering to the design system.
  */
 
-export interface ButtonProps<T> extends ComponentsProps {
+export interface ButtonProps extends ComponentsProps {
   text: string;
   ariaLabel: string;
   size?: "xl" | "lg" | "base" | "sm";
   color?: "default" | "primary" | "secondary";
   variant?: "borderOnly";
-  onClick(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>): T;
+  onClick(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 function getButtonSize(size?: string): string {
@@ -100,65 +100,7 @@ export function getButtonColor(color?: string): string {
   return finalColor + " transition-colors duration-300";
 }
 
-export function getButtonBorder(color?: string, size?: string): string {
-  let finalSize: string = "";
-  let finalColor: string = "";
-
-  if (size) {
-    switch (size) {
-      case "xl":
-        finalSize = "";
-        break;
-      case "lg":
-        finalSize = "";
-        break;
-      case "base":
-        finalSize = "border-2";
-        break;
-      case "sm":
-        finalSize = "";
-        break;
-      default:
-        finalSize = "border-2";
-        break;
-    }
-  } else {
-    finalSize = "border-2";
-  }
-
-  if (color) {
-    switch (color) {
-      case "default":
-        finalColor =
-          "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
-        break;
-      case "primary":
-        finalColor =
-          "border-primary-500 hover:border-primary-400 text-primary-500";
-        break;
-      case "secondary":
-        finalColor =
-          "border-secondary-500 hover:border-secondary-400 text-secondary-500";
-        break;
-      default:
-        finalColor =
-          "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
-        break;
-    }
-  } else {
-    finalColor =
-      "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
-  }
-
-  return (
-    finalSize +
-    " " +
-    finalColor +
-    " bg-transparent transition-colors duration-300"
-  );
-}
-
-function getButtonStyle<T>(props: ButtonProps<T>): string {
+function getButtonStyle(props: ButtonProps): string {
   let size: string = getButtonSize(props.size);
   let radius: string = getRadius(props.radius);
   let shadow: string = getShadow(props.shadow);
@@ -173,8 +115,8 @@ function getButtonStyle<T>(props: ButtonProps<T>): string {
   return size + " " + radius + " " + shadow + " " + bgColor + " " + className;
 }
 
-export default function Button<T>(props: ButtonProps<T>) {
-  let style: string = getButtonStyle<T>(props);
+export default function Button(props: ButtonProps) {
+  let style: string = getButtonStyle(props);
   return (
     <button
       aria-label={props.ariaLabel}

@@ -1,63 +1,11 @@
-import { Children } from "react";
 import "./style.css";
-import { ComponentsProps, getRadius, getShadow } from "../components";
+import { Children } from "react";
+import { ColoredComponentsProps, getHoverColor, getHoverShadow, getColor, getRadius, getShadow } from "../components";
 
-interface DropDownContentProps extends ComponentsProps {
+interface DropDownContentProps extends ColoredComponentsProps {
   contentId: string;
-  color?: "default" | "primary" | "secondary";
   size?: "xl" | "lg" | "md" | "base" | "sm";
   children: React.ReactNode;
-}
-
-function getDropDownItemColor(color?: string): string {
-  let colorStyle: string = "";
-  if (color) {
-    switch (color) {
-      case "default":
-        colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
-        break;
-      case "primary":
-        colorStyle = "bg-primary-500 hover:bg-primary-400";
-        break;
-      case "secondary":
-        colorStyle = "bg-secondary-500 hover:bg-secondary-400";
-        break;
-      default:
-        colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
-        break;
-    }
-  } else {
-    colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
-  }
-
-  return colorStyle;
-}
-
-function getDropDownContentColor(color?: string): string {
-  let colorStyle: string = "";
-  if (color) {
-    switch (color) {
-      case "default":
-        colorStyle =
-          "bg-default-100 dark:bg-default-800 text-black dark:text-white";
-        break;
-      case "primary":
-        colorStyle = "bg-primary-500 text-white";
-        break;
-      case "secondary":
-        colorStyle = "bg-secondary-500 text-white";
-        break;
-      default:
-        colorStyle =
-          "bg-default-100 dark:bg-default-800 text-black dark:text-white";
-        break;
-    }
-  } else {
-    colorStyle =
-      "bg-default-100 dark:bg-default-800 text-black dark:text-white";
-  }
-
-  return colorStyle;
 }
 
 function getDropDownContentSize(size?: string): string {
@@ -68,8 +16,6 @@ function getDropDownContentSize(size?: string): string {
         sizeStyle = "w-96";
         break;
       case "lg":
-        sizeStyle = "w-80";
-        break;
       case "md":
         sizeStyle = "w-64";
         break;
@@ -93,7 +39,7 @@ function getDropDownContentSize(size?: string): string {
 function getDropDownContentStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
-  const color: string = getDropDownContentColor(props.color);
+  const color: string = getColor(props.color);
   const size: string = getDropDownContentSize(props.size);
 
   return radius + " " + shadow + " " + color + " " + size;
@@ -101,9 +47,10 @@ function getDropDownContentStyle(props: DropDownContentProps): string {
 
 function getDropDownItemStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
-  const color: string = getDropDownItemColor(props.color);
+  const color: string = getHoverColor(props.color);
+  const shadow: string = getHoverShadow(props.shadow);
 
-  return radius + " " + color;
+  return radius + " " + color + " " + shadow;
 }
 
 export default function DropDownContent(props: DropDownContentProps) {
@@ -119,9 +66,11 @@ export default function DropDownContent(props: DropDownContentProps) {
   return (
     <ul
       id={props.contentId}
+      key={props.key}
       className={
         style +
-        " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow"
+        " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow " + 
+        props.className
       }
     >
       {itemChildren}
