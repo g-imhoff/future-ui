@@ -19,20 +19,20 @@ function getAlertType(type?: string) : string {
   if (type) {
     switch (type) {
       case "failed":
-        color = "";
+        color = "bg-negative-500 text-white";
         break;
       case "success":
-        color = "";
+        color = "bg-positive-500 text-white";
         break;
       case "warning":
-        color = "";
+        color = "bg-warning-500 text-white";
         break;
       default:
-        color = "bg-default-800 text-white";
+        color = "bg-default-200 dark:bg-default-800 text-black dark:text-white";
         break;
     }
   } else {
-    color = "bg-default-800 text-white";
+    color = "bg-default-200 dark:bg-default-800 text-black dark:text-white";
   }
 
   return color;
@@ -44,26 +44,26 @@ function getAlertSize(size?: "xl" | "lg" | "md" | "base" | "sm") : string {
   if (size) {
     switch (size) {
       case "xl":
-        finalSize = "";
+        finalSize = "w-full";
         break;
       case "lg":
-        finalSize = "";
+        finalSize = "w-3/4";
         break;
       case "md":
-        finalSize = "";
+        finalSize = "w-1/2";
         break;
       case "base":
-        finalSize = "";
+        finalSize = "w-1/3";
         break;
       case "sm":
-        finalSize = "";
+        finalSize = "w-1/4";
         break;
       default:
-        finalSize = "";
+        finalSize = "w-1/3";
         break;
     }
   } else {
-    finalSize = "w-96 h-fit";
+    finalSize = "w-1/3";
   }
 
   return finalSize;
@@ -82,10 +82,10 @@ function getAlertStyle(props: AlertProps) {
 export default function Alert(props: AlertProps) {
   const style: string = getAlertStyle(props);
   return (
-    <div id={props.id} key={props.key} className={"subpixel-antialiased flex " + style + " " + props.className}>
+    <div id={props.id} key={props.key} className={"subpixel-antialiased flex h-fit " + style + " " + props.className}>
       <Image className="h-full m-4" src={props.svg} alt={props.svgAlt} />
       <div className="flex justify-start items-center grow">
-        {props.text}  
+        <p className="subpixel-antialiased">{props.text}</p>  
       </div> 
       <button className="h-full w-fit"onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => props.svgCloseOnClick(e, props.id)}> 
         <Image className="h-full m-4" src={props.svgClose} alt={props.svgCloseAlt} />
