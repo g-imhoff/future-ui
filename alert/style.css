@@ -1,0 +1,59 @@
+@tailwind components;
+
+@layer components {
+  .Alert {
+    position: absolute;
+  }
+
+  .AlertDynamicShowTopLeft {
+    @apply Alert;
+    
+    inset: 15px 0 0 0;
+    animation: dynamicShow 0.3s linear;
+  }
+
+  .AlertDynamicHideTopLeft {
+    @apply Alert;
+
+    visibility: hidden;
+
+    inset: 15px 0 0 0;
+    animation: dynamicHide 0.3s linear;
+  }
+}
+
+@keyframes dynamicShow {
+  0% {
+    transform: translate(-100%);
+  }
+
+  50% {
+    transform: translate(-50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes dynamicHide {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(-50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(-100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(-100%);
+  }
+}
