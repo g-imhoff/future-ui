@@ -119,7 +119,10 @@ export default function DropDownContent(props: DropDownContentProps) {
   return (
     <ul
       id={props.contentId}
-      className={style + " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow"}
+      className={
+        style +
+        " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow"
+      }
     >
       {itemChildren}
     </ul>

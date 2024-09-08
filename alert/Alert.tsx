@@ -10,10 +10,13 @@ interface AlertProps extends ComponentsProps {
   svgAlt: string;
   svgClose: any;
   svgCloseAlt: string;
-  svgCloseOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: string | undefined): void;
+  svgCloseOnClick(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: string | undefined,
+  ): void;
 }
 
-function getAlertType(type?: string) : string {
+function getAlertType(type?: string): string {
   let color: string = "";
 
   if (type) {
@@ -38,7 +41,7 @@ function getAlertType(type?: string) : string {
   return color;
 }
 
-function getAlertSize(size?: "xl" | "lg" | "md" | "base" | "sm") : string {
+function getAlertSize(size?: "xl" | "lg" | "md" | "base" | "sm"): string {
   let finalSize: string = "";
 
   if (size) {
@@ -75,21 +78,35 @@ function getAlertStyle(props: AlertProps) {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
 
-  
   return type + " " + size + " " + radius + " " + shadow;
 }
 
 export default function Alert(props: AlertProps) {
   const style: string = getAlertStyle(props);
   return (
-    <div id={props.id} key={props.key} className={"subpixel-antialiased flex h-fit " + style + " " + props.className}>
+    <div
+      id={props.id}
+      key={props.key}
+      className={
+        "subpixel-antialiased flex h-fit " + style + " " + props.className
+      }
+    >
       <Image className="h-full m-4" src={props.svg} alt={props.svgAlt} />
       <div className="flex justify-start items-center grow">
-        <p className="subpixel-antialiased">{props.text}</p>  
-      </div> 
-      <button className="h-full w-fit"onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => props.svgCloseOnClick(e, props.id)}> 
-        <Image className="h-full m-4" src={props.svgClose} alt={props.svgCloseAlt} />
+        <p className="subpixel-antialiased">{props.text}</p>
+      </div>
+      <button
+        className="h-full w-fit"
+        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+          props.svgCloseOnClick(e, props.id)
+        }
+      >
+        <Image
+          className="h-full m-4"
+          src={props.svgClose}
+          alt={props.svgCloseAlt}
+        />
       </button>
     </div>
-  )
+  );
 }
