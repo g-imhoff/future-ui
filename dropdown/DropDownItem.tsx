@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { BasicProps } from "../components";
 
-interface DropDownItem {
+interface DropDownItem extends BasicProps {
   href: string;
   text: string;
 }
@@ -8,7 +9,9 @@ interface DropDownItem {
 export default function DropDownItem(props: DropDownItem) {
   return (
     <Link
-      className="subpixel-antialiased flex justify-between grow w-full h-full"
+      key={props.key}
+      id={props.id}
+      className={"subpixel-antialiased flex justify-between grow w-full h-full " + props.className}
       href={props.href}
     >
       {props.text}

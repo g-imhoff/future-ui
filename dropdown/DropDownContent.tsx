@@ -1,9 +1,9 @@
 import "./style.css";
 import { Children } from "react";
 import { ColoredComponentsProps } from "../components";
-import { getHoverColor, getColor } from "../color";
 import { getRadius } from "../radius";
 import { getShadow, getHoverShadow } from "../shadow";
+import { getColor, getHoverColor } from "../color";
 
 interface DropDownContentProps extends ColoredComponentsProps {
   contentId: string;
@@ -42,7 +42,7 @@ function getDropDownContentSize(size?: string): string {
 function getDropDownContentStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
-  const color: string = getColor(props.color);
+  const color: string = getColor(props.hasHoverEffect, props.color, props.variant, props.blurProps);
   const size: string = getDropDownContentSize(props.size);
 
   return radius + " " + shadow + " " + color + " " + size;
@@ -50,7 +50,7 @@ function getDropDownContentStyle(props: DropDownContentProps): string {
 
 function getDropDownItemStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
-  const color: string = getHoverColor(props.color);
+  const color: string = props.hasHoverEffect ? getHoverColor(props.color, props.variant) : "";
   const shadow: string = getHoverShadow(props.shadow);
 
   return radius + " " + color + " " + shadow;

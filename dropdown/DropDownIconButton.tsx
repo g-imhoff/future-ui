@@ -1,17 +1,12 @@
-import { ShadowProps } from "../components";
 import IconButton, { IconButtonProps } from "../button/IconButton";
 
-interface DropDownIconButtonProps extends IconButtonProps<void> {
+interface DropDownIconButtonProps extends IconButtonProps {
   displayedId: string;
 }
 
 export default function DropDownIconButton(props: DropDownIconButtonProps) {
-  let shadowStyle: ShadowProps = {
-    size: props.shadow?.size,
-    color: props.shadow?.color,
-  };
 
-  function displayDropDownContent() {
+  function displayDropDownContent(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) : void {
     const DropDownContent = document.getElementById(props.displayedId);
 
     if (DropDownContent?.classList.contains("DropDownContentHidden")) {
@@ -22,22 +17,23 @@ export default function DropDownIconButton(props: DropDownIconButtonProps) {
       DropDownContent?.classList.add("DropDownContentHidden");
     }
 
-    props.onClick();
+    props.onClick(e);
   }
 
   return (
-    <div className="w-full h-fit flex justify-center items-center">
+    <div className="w-fit h-fit">
       <IconButton
+        className={props.className}
+        radius={props.radius}
+        shadow={props.shadow}
+        color={props.color}
+        variant={props.variant}
+        blurProps={props.blurProps} 
+        hasHoverEffect={props.hasHoverEffect}
         text={props.text}
         ariaLabel={props.ariaLabel}
         size={props.size}
-        color={props.color}
-        variant={props.variant}
         onClick={displayDropDownContent}
-        className={props.className}
-        radius={props.radius}
-        shadow={shadowStyle}
-        key={props.key}
         svg={props.svg}
         svgBlack={props.svgBlack}
       />

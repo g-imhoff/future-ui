@@ -33,6 +33,26 @@ export function getColor(
   }
 }
 
+export function getHoverColor(
+  color?: "default" | "primary" | "secondary",
+  variant?: "default" | "borderonly" | "blur" | "soft",
+) : string {
+  if (variant) {
+    switch (variant) {
+      case "default":
+        return getDefaultHoverColor(color);
+      case "borderonly":
+        return getHoverBorderOnlyColor(color);
+      case "soft":
+        return getHoverSoftColor(color);  
+      default:
+        return getDefaultHoverColor(color);
+    }
+  } else {
+    return getDefaultHoverColor(color);
+  }
+}
+
 function getSoftColor(color?: "default" | "primary" | "secondary") : string {
   let colorStyle: string = "";
   if (color) {

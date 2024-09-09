@@ -1,17 +1,11 @@
 import Button, { ButtonProps } from "../button/Button";
-import { ShadowProps } from "../components";
 
 interface DropDownButtonProps extends ButtonProps {
   displayedId: string;
 }
 
 export default function DropDownButton(props: DropDownButtonProps) {
-  let shadowStyle: ShadowProps = {
-    size: props.shadow?.size,
-    color: props.shadow?.color,
-  };
-
-  function displayDropDownContent() {
+  function displayDropDownContent(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) : void {
     const DropDownContent = document.getElementById(props.displayedId);
 
     if (DropDownContent?.classList.contains("DropDownContentHidden")) {
@@ -22,22 +16,23 @@ export default function DropDownButton(props: DropDownButtonProps) {
       DropDownContent?.classList.add("DropDownContentHidden");
     }
 
-    props.onClick();
+    props.onClick(e);
   }
 
   return (
-    <div id={props.id} key={props.key} className={"w-full h-fit flex justify-center items-center " + props.className}>
+    <div id={props.id} key={props.key} className="w-fit h-fit">
       <Button
+        className={props.className}
+        radius={props.radius}
+        shadow={props.shadow}
+        color={props.color}
+        variant={props.variant}
+        blurProps={props.blurProps} 
+        hasHoverEffect={props.hasHoverEffect}
         text={props.text}
         ariaLabel={props.ariaLabel}
         size={props.size}
-        color={props.color}
-        variant={props.variant}
         onClick={displayDropDownContent}
-        className={props.className}
-        radius={props.radius}
-        shadow={shadowStyle}
-        key={props.key}
       />
     </div>
   );
