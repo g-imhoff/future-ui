@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { ButtonProps } from "./Button";
-import { getButtonColor } from "./Button";
 import { getRadius } from "../radius";
 import { getShadow } from "../shadow";
+import { getColor } from "../color";
 
-export interface IconButtonProps<T> extends ButtonProps<T> {
+export interface IconButtonProps extends ButtonProps {
   svg: any;
   svgBlack?: any;
 }
@@ -28,16 +28,11 @@ function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
   }
 }
 
-function getIconButtonStyle<T>(props: IconButtonProps<T>): string {
+function getIconButtonStyle(props: IconButtonProps): string {
   let size: string = getIconButtonSize(props.size);
   let radius: string = getRadius(props.radius);
   let shadow: string = getShadow(props.shadow);
-  let bgColor: string = "";
-  if (props.variant === "borderOnly") {
-    bgColor = getButtonBorder(props.color, props.size);
-  } else {
-    bgColor = getButtonColor(props.color);
-  }
+  let bgColor: string = getColor(props.hasHoverEffect, props.color, props.variant, props.blurProps);
   let className: string = props.className !== undefined ? props.className : "";
 
   return (
@@ -54,8 +49,8 @@ function getIconButtonStyle<T>(props: IconButtonProps<T>): string {
   );
 }
 
-export default function IconButton<T>(props: IconButtonProps<T>) {
-  let style: string = getIconButtonStyle<T>(props);
+export default function IconButton(props: IconButtonProps) {
+  let style: string = getIconButtonStyle(props);
 
   function ifSvgBlackExist() {
     if (props.svgBlack) {

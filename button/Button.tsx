@@ -37,7 +37,7 @@ function getButtonStyle(props: ButtonProps): string {
   let radius: string = getRadius(props.radius);
   let shadow: string = getShadow(props.shadow);
   let bgColor: string = getColor(
-    true,
+    props.hasHoverEffect,
     props.color,
     props.variant,
     props.blurProps,

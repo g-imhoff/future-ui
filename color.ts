@@ -1,33 +1,87 @@
 import { BlurProps } from "./components";
 
 export function getColor(
-  hasHoverEffect: boolean,
+  hasHoverEffect: boolean | undefined,
   color?: "default" | "primary" | "secondary",
-  variant?: "default" | "borderonly" | "blur",
+  variant?: "default" | "borderonly" | "blur" | "soft",
   blurProps?: BlurProps,
 ): string {
   if (variant) {
     switch (variant) {
       case "default":
         return hasHoverEffect
-          ? getDefaultColor(color) + " " + getDefaultHoverColor(color)
+          ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
           : getDefaultColor(color);
       case "borderonly":
         return hasHoverEffect
-          ? getBorderOnlyColor(color) + " " + getHoverBorderOnlyColor(color)
+          ? getBorderOnlyColor(color) + " transition-colors duration-300 " + getHoverBorderOnlyColor(color)
           : getBorderOnlyColor(color);
       case "blur":
         return getBlur(blurProps);
+      case "soft":
+        let base: string = getBlur(blurProps) + " " + getSoftColor(color);
+        return hasHoverEffect ? base + " transition-colors duration-300 " + getHoverSoftColor(color) : base;  
       default:
         return hasHoverEffect
-          ? getDefaultColor(color) + " " + getDefaultHoverColor(color)
+          ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
           : getDefaultColor(color);
     }
   } else {
     return hasHoverEffect
-      ? getDefaultColor(color) + " " + getDefaultHoverColor(color)
+      ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
       : getDefaultColor(color);
   }
+}
+
+function getSoftColor(color?: "default" | "primary" | "secondary") : string {
+  let colorStyle: string = "";
+  if (color) {
+    switch (color) {
+      case "default":
+        colorStyle =
+          "bg-default-100/30 dark:bg-default-800/30 text-black dark:text-white";
+        break;
+      case "primary":
+        colorStyle = "bg-primary-500/30 text-white";
+        break;
+      case "secondary":
+        colorStyle = "bg-secondary-500/30 text-white";
+        break;
+      default:
+        colorStyle =
+          "bg-default-100/30 dark:bg-default-800/30 text-black dark:text-white";
+        break;
+    }
+  } else {
+    colorStyle =
+      "bg-default-100/30 dark:bg-default-800/30 text-black dark:text-white";
+  }
+
+  return colorStyle;
+}
+
+function getHoverSoftColor(color?: "default" | "primary" | "secondary") : string {
+  let colorStyle: string = "";
+  if (color) {
+    switch (color) {
+      case "default":
+        colorStyle = "hover:bg-default-200/30 dark:hover:bg-default-700/30";
+        break;
+      case "primary":
+        colorStyle = "hover:bg-primary-400/30";
+        break;
+      case "secondary":
+        colorStyle = "hover:bg-secondary-400/30";
+        break;
+      default:
+        colorStyle = "hover:bg-default-200/30 dark:hover:bg-default-700/30";
+        break;
+    }
+  } else {
+    colorStyle = "hover:bg-default-200/30 dark:hover:bg-default-700/30";
+  }
+
+  return colorStyle;
 }
 
 function getBlur(props?: BlurProps): string {
@@ -86,15 +140,18 @@ function getBlur(props?: BlurProps): string {
           saturation = "backdrop-saturate-200";
           break;
         default:
-          saturation = "backdrop-saturate-200";
+          saturation = "backdrop-saturate-150";
           break;
       }
     } else {
       saturation = "backdrop-saturate-150";
     }
+  } else {
+    saturation = "backdrop-saturate-150";
+    blurSize = "backdrop-blur";
   }
 
-  return blurSize + " " + saturation;
+  return blurSize + " text-black dark:text-white " + saturation;
 }
 
 function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
@@ -103,7 +160,7 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
     switch (color) {
       case "default":
         finalColor =
-          "border-default-100 text-black dark:border-default-800 text-black dark:text-white";
+          "border-default-800 dark:border-default-100 text-black dark:text-white";
         break;
       case "primary":
         finalColor = "border-primary-500 text-primary-500";
@@ -113,12 +170,12 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
         break;
       default:
         finalColor =
-          "border-default-100 text-black dark:border-default-800 text-black dark:text-white";
+          "border-default-800 dark:border-default-100 text-black dark:text-white";
         break;
     }
   } else {
     finalColor =
-      "border-default-100 text-black dark:border-default-800 text-black dark:text-white";
+      "border-default-800 dark:border-default-100 text-black dark:text-white";
   }
 
   return finalColor + " border-2";
@@ -131,7 +188,7 @@ function getHoverBorderOnlyColor(
   if (color) {
     switch (color) {
       case "default":
-        finalColor = "hover:border-default-200 dark:hover:border-default-700";
+        finalColor = "dark:hover:border-default-200 hover:border-default-700";
         break;
       case "primary":
         finalColor = "hover:border-primary-400";
@@ -140,11 +197,11 @@ function getHoverBorderOnlyColor(
         finalColor = "hover:border-secondary-400";
         break;
       default:
-        finalColor = "hover:border-default-200 dark:hover:border-default-700";
+        finalColor = "dark:hover:border-default-200 hover:border-default-700";
         break;
     }
   } else {
-    finalColor = "hover:border-default-200 dark:hover:border-default-700";
+    finalColor = "dark:hover:border-default-200 hover:border-default-700";
   }
 
   return finalColor;
@@ -177,7 +234,7 @@ function getDefaultColor(color?: "default" | "primary" | "secondary"): string {
   return colorStyle;
 }
 
-export function getDefaultHoverColor(color?: string): string {
+function getDefaultHoverColor(color?: string): string {
   let colorStyle: string = "";
   if (color) {
     switch (color) {
@@ -198,5 +255,5 @@ export function getDefaultHoverColor(color?: string): string {
     colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
   }
 
-  return colorStyle + " transition-colors duration-300";
+  return colorStyle;
 }
