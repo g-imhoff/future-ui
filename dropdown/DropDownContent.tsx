@@ -1,6 +1,9 @@
 import "./style.css";
 import { Children } from "react";
-import { ColoredComponentsProps, getHoverColor, getHoverShadow, getColor, getRadius, getShadow } from "../components";
+import { ColoredComponentsProps } from "../components";
+import { getHoverColor, getColor } from "../color";
+import { getRadius } from "../radius";
+import { getShadow, getHoverShadow } from "../shadow";
 
 interface DropDownContentProps extends ColoredComponentsProps {
   contentId: string;
@@ -69,7 +72,7 @@ export default function DropDownContent(props: DropDownContentProps) {
       key={props.key}
       className={
         style +
-        " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow " + 
+        " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow " +
         props.className
       }
     >
