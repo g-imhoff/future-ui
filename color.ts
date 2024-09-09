@@ -1,19 +1,89 @@
-export function getColor(color?: "default" | "primary" | "secondary", variant?: "default" | "borderonly" | "blur", blurSize?: "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none"): string {
+import { BlurProps } from "./components";
+
+export function getColor(
+  color?: "default" | "primary" | "secondary",
+  variant?: "default" | "borderonly" | "blur",
+  blurProps?: BlurProps,
+): string {
   if (variant) {
     switch (variant) {
       case "default":
         return getDefaultColor(color);
       case "borderonly":
         return getBorderOnlyColor(color);
-      case "blur":  
-        return getBlur(blurSize);
+      case "blur":
+        return getBlur(blurProps);
     }
   } else {
     return getDefaultColor(color);
   }
 }
 
-function getBlur(blurSize?: "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none") {
+function getBlur(props?: BlurProps): string {
+  let blurSize: string = "";
+  let saturation: string = "";
+  if (props) {
+    if (props.blurSize) {
+      switch (props.blurSize) {
+        case "3xl":
+          blurSize = "backdrop-blur-3xl";
+          break;
+        case "2xl":
+          blurSize = "backdrop-blur-2xl";
+          break;
+        case "xl":
+          blurSize = "backdrop-blur-xl";
+          break;
+        case "lg":
+          blurSize = "backdrop-blur-lg";
+          break;
+        case "md":
+          blurSize = "backdrop-blur-md";
+          break;
+        case "base":
+          blurSize = "backdrop-blur";
+          break;
+        case "sm":
+          blurSize = "backdrop-blur-sm";
+          break;
+        case "none":
+          blurSize = "backdrop-blur-none";
+          break;
+        default:
+          blurSize = "backdrop-blur";
+          break;
+      }
+    } else {
+      blurSize = "backdrop-blur";
+    }
+
+    if (props.saturation) {
+      switch (props.saturation) {
+        case "0":
+          saturation = "backdrop-saturate-0";
+          break;
+        case "50":
+          saturation = "backdrop-saturate-50";
+          break;
+        case "100":
+          saturation = "backdrop-saturate-100";
+          break;
+        case "150":
+          saturation = "backdrop-saturate-150";
+          break;
+        case "200":
+          saturation = "backdrop-saturate-200";
+          break;
+        default:
+          saturation = "backdrop-saturate-200";
+          break;
+      }
+    } else {
+      saturation = "backdrop-saturate-150";
+    }
+  }
+
+  return blurSize + " " + saturation;
 }
 
 function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
@@ -40,7 +110,7 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
   } else {
     finalColor =
       "border-default-100 hover:border-default-200 dark:border-default-800 dark:hover:border-default-700 text-black dark:text-white";
-  } 
+  }
 
   return finalColor + " border-2";
 }

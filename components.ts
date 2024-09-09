@@ -33,6 +33,11 @@ export interface ShadowProps {
   color?: "default" | "primary" | "secondary";
 }
 
+export interface BlurProps {
+  blurSize?: "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none";
+  saturation?: "0" | "50" | "100" | "150" | "200";
+}
+
 export interface BasicProps {
   className?: string;
   id?: string;
@@ -47,4 +52,5 @@ export interface ComponentsProps extends BasicProps {
 export interface ColoredComponentsProps extends ComponentsProps {
   color?: "default" | "primary" | "secondary";
   variant?: "default" | "borderonly" | "blur";
+  blurProps?: BlurProps;
 }
