@@ -6,31 +6,59 @@ export function getColor(
   variant?: "default" | "borderonly" | "blur" | "soft",
   blurProps?: BlurProps,
 ): string {
+  let style: string = "";
   if (variant) {
     switch (variant) {
       case "default":
-        return hasHoverEffect
+        style = hasHoverEffect
           ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
           : getDefaultColor(color);
+        break;
       case "borderonly":
-        return hasHoverEffect
+        style = hasHoverEffect
           ? getBorderOnlyColor(color) + " transition-colors duration-300 " + getHoverBorderOnlyColor(color)
           : getBorderOnlyColor(color);
+        break;
       case "blur":
-        return getBlur(blurProps);
+        style = getBlur(blurProps);
+        break;
       case "soft":
         let base: string = getBlur(blurProps) + " " + getSoftColor(color);
-        return hasHoverEffect ? base + " transition-colors duration-300 " + getHoverSoftColor(color) : base;  
+        style = hasHoverEffect ? base + " transition-colors duration-300 " + getHoverSoftColor(color) : base;  
+        break;
       default:
-        return hasHoverEffect
+        style = hasHoverEffect
           ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
           : getDefaultColor(color);
+        break;
     }
   } else {
-    return hasHoverEffect
+     style = hasHoverEffect
       ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
       : getDefaultColor(color);
   }
+
+  if (color) {
+    switch (color) {
+      case "default":
+        style += " text-black dark:text-white";
+        break;
+      case "primary":
+        style += " text-white";
+        break;
+      case "secondary":
+        style += " text-white";
+        break;
+      default: 
+        style += " text-black dark:text-white";
+        break;
+    }
+
+  } else {
+    style += " text-black dark:text-white";
+  }
+
+  return style;
 }
 
 export function getHoverColor(
@@ -59,22 +87,22 @@ export function getSoftColor(color?: "default" | "primary" | "secondary") : stri
     switch (color) {
       case "default":
         colorStyle =
-          "bg-default-100/30 dark:bg-default-800/30 text-black dark:text-white";
+          "bg-white/30 dark:bg-default-800/30";
         break;
       case "primary":
-        colorStyle = "bg-primary-500/30 text-white";
+        colorStyle = "bg-primary-500/30";
         break;
       case "secondary":
-        colorStyle = "bg-secondary-500/30 text-white";
+        colorStyle = "bg-secondary-500/30";
         break;
       default:
         colorStyle =
-          "bg-default-100/30 dark:bg-default-800/30 text-black dark:text-white";
+          "bg-white/30 dark:bg-default-800/30";
         break;
     }
   } else {
     colorStyle =
-      "bg-default-100/30 dark:bg-default-800/30 text-black dark:text-white";
+      "bg-white/30 dark:bg-default-800/30";
   }
 
   return colorStyle;
@@ -180,22 +208,22 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
     switch (color) {
       case "default":
         finalColor =
-          "border-default-800 dark:border-default-100 text-black dark:text-white";
+          "border-default-800 dark:border-default-200";
         break;
       case "primary":
-        finalColor = "border-primary-500 text-primary-500";
+        finalColor = "border-primary-500";
         break;
       case "secondary":
-        finalColor = "border-secondary-500 text-secondary-500";
+        finalColor = "border-secondary-500";
         break;
       default:
         finalColor =
-          "border-default-800 dark:border-default-100 text-black dark:text-white";
+          "border-default-800 dark:border-default-200";
         break;
     }
   } else {
     finalColor =
-      "border-default-800 dark:border-default-100 text-black dark:text-white";
+      "border-default-800 dark:border-default-100";
   }
 
   return finalColor + " border-2";
@@ -233,22 +261,22 @@ export function getDefaultColor(color?: "default" | "primary" | "secondary"): st
     switch (color) {
       case "default":
         colorStyle =
-          "bg-default-100 dark:bg-default-800 text-black dark:text-white";
+          "bg-default-100 dark:bg-default-800";
         break;
       case "primary":
-        colorStyle = "bg-primary-500 text-white";
+        colorStyle = "bg-primary-500";
         break;
       case "secondary":
-        colorStyle = "bg-secondary-500 text-white";
+        colorStyle = "bg-secondary-500";
         break;
       default:
         colorStyle =
-          "bg-default-100 dark:bg-default-800 text-black dark:text-white";
+          "bg-default-100 dark:bg-default-800";
         break;
     }
   } else {
     colorStyle =
-      "bg-default-100 dark:bg-default-800 text-black dark:text-white";
+      "bg-default-100 dark:bg-default-800";
   }
 
   return colorStyle;
