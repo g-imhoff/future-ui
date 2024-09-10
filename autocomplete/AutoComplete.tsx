@@ -38,7 +38,6 @@ export default function AutoComplete(props: AutoCompleteProps) {
   return (
     <div
       id={props.id}
-      key={props.key}
       className={"w-full h-fit px-4 relative " + props.className}
     >
       {props.children}

@@ -32,7 +32,12 @@ function getIconButtonStyle(props: IconButtonProps): string {
   let size: string = getIconButtonSize(props.size);
   let radius: string = getRadius(props.radius);
   let shadow: string = getShadow(props.shadow);
-  let bgColor: string = getColor(props.hasHoverEffect, props.color, props.variant, props.blurProps);
+  let bgColor: string = getColor(
+    props.hasHoverEffect,
+    props.color,
+    props.variant,
+    props.blurProps,
+  );
   let className: string = props.className !== undefined ? props.className : "";
 
   return (

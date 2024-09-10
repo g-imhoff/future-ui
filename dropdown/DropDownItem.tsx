@@ -9,9 +9,11 @@ interface DropDownItem extends BasicProps {
 export default function DropDownItem(props: DropDownItem) {
   return (
     <Link
-      key={props.key}
       id={props.id}
-      className={"subpixel-antialiased flex justify-between grow w-full h-full " + props.className}
+      className={
+        "subpixel-antialiased flex justify-between grow w-full h-full " +
+        props.className
+      }
       href={props.href}
     >
       {props.text}

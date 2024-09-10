@@ -41,7 +41,6 @@ export interface BlurProps {
 export interface BasicProps {
   className?: string;
   id?: string;
-  key?: string;
 }
 
 export interface ComponentsProps extends BasicProps {
@@ -53,5 +52,5 @@ export interface ColoredComponentsProps extends ComponentsProps {
   color?: "default" | "primary" | "secondary";
   variant?: "default" | "borderonly" | "blur" | "soft";
   blurProps?: BlurProps;
-  hasHoverEffect: boolean;
+  hasHoverEffect?: boolean;
 }

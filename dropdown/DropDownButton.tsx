@@ -5,7 +5,9 @@ interface DropDownButtonProps extends ButtonProps {
 }
 
 export default function DropDownButton(props: DropDownButtonProps) {
-  function displayDropDownContent(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) : void {
+  function displayDropDownContent(
+    e?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void {
     const DropDownContent = document.getElementById(props.displayedId);
 
     if (DropDownContent?.classList.contains("DropDownContentHidden")) {
@@ -20,14 +22,14 @@ export default function DropDownButton(props: DropDownButtonProps) {
   }
 
   return (
-    <div id={props.id} key={props.key} className="w-fit h-fit">
+    <div id={props.id} className="w-fit h-fit">
       <Button
         className={props.className}
         radius={props.radius}
         shadow={props.shadow}
         color={props.color}
         variant={props.variant}
-        blurProps={props.blurProps} 
+        blurProps={props.blurProps}
         hasHoverEffect={props.hasHoverEffect}
         text={props.text}
         ariaLabel={props.ariaLabel}

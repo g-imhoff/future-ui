@@ -5,8 +5,9 @@ interface DropDownIconButtonProps extends IconButtonProps {
 }
 
 export default function DropDownIconButton(props: DropDownIconButtonProps) {
-
-  function displayDropDownContent(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) : void {
+  function displayDropDownContent(
+    e?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void {
     const DropDownContent = document.getElementById(props.displayedId);
 
     if (DropDownContent?.classList.contains("DropDownContentHidden")) {
@@ -28,7 +29,7 @@ export default function DropDownIconButton(props: DropDownIconButtonProps) {
         shadow={props.shadow}
         color={props.color}
         variant={props.variant}
-        blurProps={props.blurProps} 
+        blurProps={props.blurProps}
         hasHoverEffect={props.hasHoverEffect}
         text={props.text}
         ariaLabel={props.ariaLabel}

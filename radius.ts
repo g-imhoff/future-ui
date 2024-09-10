@@ -1,4 +1,6 @@
-export function getRadius(radius?: "full" | "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none"): string {
+export function getRadius(
+  radius?: "full" | "3xl" | "2xl" | "xl" | "lg" | "md" | "base" | "sm" | "none",
+): string {
   if (radius) {
     switch (radius) {
       case "full":

@@ -1,9 +1,10 @@
-import { ComponentsProps, getRadius, getShadow } from "../components";
+import { getColor } from "../color";
+import { ColoredComponentsProps } from "../components";
+import { getRadius } from "../radius";
+import { getShadow } from "../shadow";
 import { getAutoCompleteSize } from "./AutoComplete";
-import { getAutoCompleteContentBackground } from "./AutoCompleteContent";
-import { ChangeEvent } from "react";
 
-interface AutoCompleteSearchBarProps extends ComponentsProps {
+interface AutoCompleteSearchBarProps extends ColoredComponentsProps {
   placeholder?: string;
   size?: "full" | "lg" | "md" | "base" | "sm";
   color?: "default" | "primary" | "secondary";
@@ -16,7 +17,12 @@ function getAutoCompleteSearchBarStyle(
 ): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
-  const bgColor: string = getAutoCompleteContentBackground(props.color);
+  const bgColor: string = getColor(
+    props.hasHoverEffect,
+    props.color,
+    props.variant,
+    props.blurProps,
+  );
   const size: string = getAutoCompleteSize(props.size);
 
   return radius + " " + shadow + " " + bgColor + " " + size;
@@ -31,11 +37,7 @@ export default function AutoCompleteSearchBar(
     getAutoCompleteSearchBarStyle(props);
 
   return (
-    <div
-      id={props.id}
-      key={props.key}
-      className="peer flex justify-center items-center"
-    >
+    <div id={props.id} className="peer flex justify-center items-center">
       <label htmlFor="AutoCompleteSearchBar"></label>
       <input
         placeholder={props.placeholder}

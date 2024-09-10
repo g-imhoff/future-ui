@@ -42,7 +42,12 @@ function getDropDownContentSize(size?: string): string {
 function getDropDownContentStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
-  const color: string = getColor(props.hasHoverEffect, props.color, props.variant, props.blurProps);
+  const color: string = getColor(
+    props.hasHoverEffect,
+    props.color,
+    props.variant,
+    props.blurProps,
+  );
   const size: string = getDropDownContentSize(props.size);
 
   return radius + " " + shadow + " " + color + " " + size;
@@ -50,7 +55,9 @@ function getDropDownContentStyle(props: DropDownContentProps): string {
 
 function getDropDownItemStyle(props: DropDownContentProps): string {
   const radius: string = getRadius(props.radius);
-  const color: string = props.hasHoverEffect ? getHoverColor(props.color, props.variant) : "";
+  const color: string = props.hasHoverEffect
+    ? getHoverColor(props.color, props.variant)
+    : "";
   const shadow: string = getHoverShadow(props.shadow);
 
   return radius + " " + color + " " + shadow;
@@ -69,7 +76,6 @@ export default function DropDownContent(props: DropDownContentProps) {
   return (
     <ul
       id={props.contentId}
-      key={props.key}
       className={
         style +
         " h-fit p-2 mt-4 absolute DropDownContentHidden hover:DropDownContentShow " +

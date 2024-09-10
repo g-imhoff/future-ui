@@ -1,6 +1,8 @@
 import Image from "next/image";
-import { ComponentsProps, getRadius, getShadow } from "../components";
+import { ComponentsProps } from "../components";
 import "./style.css";
+import { getRadius } from "../radius";
+import { getShadow } from "../shadow";
 
 interface AlertProps extends ComponentsProps {
   type?: "failed" | "success" | "warning";
@@ -86,7 +88,6 @@ export default function Alert(props: AlertProps) {
   return (
     <div
       id={props.id}
-      key={props.key}
       className={
         "subpixel-antialiased flex h-fit " + style + " " + props.className
       }

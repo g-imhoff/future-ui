@@ -1,57 +1,33 @@
-import { ComponentsProps, getRadius, ShadowProps } from "../components";
+import { getHoverColor } from "../color";
+import { ColoredComponentsProps } from "../components";
+import { getRadius } from "../radius";
+import { getHoverShadow } from "../shadow";
 
-interface AutoCompleteItemsProps extends ComponentsProps {
+interface AutoCompleteItemsProps extends ColoredComponentsProps {
   text: string;
   color?: "default" | "primary" | "secondary";
 }
 
-function getAutoCompleteItemsColor(color?: string): string {
-  let colorStyle: string = "";
-
-  if (color) {
-    switch (color) {
-      case "default":
-        colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
-        break;
-      case "primary":
-        colorStyle = "hover:bg-primary-400";
-        break;
-      case "secondary":
-        colorStyle = "hover:bg-secondary-400";
-        break;
-      default:
-        colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
-        break;
-    }
-  } else {
-    colorStyle = "hover:bg-default-200 dark:hover:bg-default-700";
-  }
-
-  return colorStyle;
-}
-
-
 function getAutoCompleteItemsStyle(props: AutoCompleteItemsProps): string {
   const radius: string = getRadius(props.radius);
-  const shadow: string = getAutoCompleteItemsShadow(props.shadow);
-  const color: string = getAutoCompleteItemsColor(props.color);
+  let shadow: string = "";
+  let color: string = "";
+
+  if (props.hasHoverEffect) {
+    shadow = getHoverShadow(props.shadow);
+    color = getHoverColor(props.color, props.variant);
+  }
 
   return radius + " " + shadow + " " + color;
 }
 
 export default function AutoCompleteItems(props: AutoCompleteItemsProps) {
   const style: string = getAutoCompleteItemsStyle(props);
-
   return (
     <li
+      key={props.id}
       id={props.id}
-      key={props.key}
-      className={
-        "p-2 h-fit transition-colors duration-300 " +
-        style +
-        " " +
-        props.className
-      }
+      className={"p-2 h-fit " + style + " " + props.className}
     >
       <p className="subpixel-antialiased">{props.text}</p>
     </li>

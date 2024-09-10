@@ -11,30 +11,40 @@ export function getColor(
     switch (variant) {
       case "default":
         style = hasHoverEffect
-          ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
+          ? getDefaultColor(color) +
+            " transition-colors duration-300 " +
+            getDefaultHoverColor(color)
           : getDefaultColor(color);
         break;
       case "borderonly":
         style = hasHoverEffect
-          ? getBorderOnlyColor(color) + " transition-colors duration-300 " + getHoverBorderOnlyColor(color)
+          ? getBorderOnlyColor(color) +
+            " transition-colors duration-300 " +
+            getHoverBorderOnlyColor(color)
           : getBorderOnlyColor(color);
         break;
       case "blur":
-        style = getBlur(blurProps);
+        style = getBlur(blurProps) + " bg-transparent";
         break;
       case "soft":
         let base: string = getBlur(blurProps) + " " + getSoftColor(color);
-        style = hasHoverEffect ? base + " transition-colors duration-300 " + getHoverSoftColor(color) : base;  
+        style = hasHoverEffect
+          ? base + " transition-colors duration-300 " + getHoverSoftColor(color)
+          : base;
         break;
       default:
         style = hasHoverEffect
-          ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
+          ? getDefaultColor(color) +
+            " transition-colors duration-300 " +
+            getDefaultHoverColor(color)
           : getDefaultColor(color);
         break;
     }
   } else {
-     style = hasHoverEffect
-      ? getDefaultColor(color) + " transition-colors duration-300 " + getDefaultHoverColor(color)
+    style = hasHoverEffect
+      ? getDefaultColor(color) +
+        " transition-colors duration-300 " +
+        getDefaultHoverColor(color)
       : getDefaultColor(color);
   }
 
@@ -49,11 +59,10 @@ export function getColor(
       case "secondary":
         style += " text-white";
         break;
-      default: 
+      default:
         style += " text-black dark:text-white";
         break;
     }
-
   } else {
     style += " text-black dark:text-white";
   }
@@ -64,7 +73,7 @@ export function getColor(
 export function getHoverColor(
   color?: "default" | "primary" | "secondary",
   variant?: "default" | "borderonly" | "blur" | "soft",
-) : string {
+): string {
   if (variant) {
     switch (variant) {
       case "default":
@@ -72,7 +81,7 @@ export function getHoverColor(
       case "borderonly":
         return getHoverBorderOnlyColor(color);
       case "soft":
-        return getHoverSoftColor(color);  
+        return getHoverSoftColor(color);
       default:
         return getDefaultHoverColor(color);
     }
@@ -81,13 +90,14 @@ export function getHoverColor(
   }
 }
 
-export function getSoftColor(color?: "default" | "primary" | "secondary") : string {
+export function getSoftColor(
+  color?: "default" | "primary" | "secondary",
+): string {
   let colorStyle: string = "";
   if (color) {
     switch (color) {
       case "default":
-        colorStyle =
-          "bg-white/30 dark:bg-default-800/30";
+        colorStyle = "bg-white/30 dark:bg-default-800/30";
         break;
       case "primary":
         colorStyle = "bg-primary-500/30";
@@ -96,19 +106,19 @@ export function getSoftColor(color?: "default" | "primary" | "secondary") : stri
         colorStyle = "bg-secondary-500/30";
         break;
       default:
-        colorStyle =
-          "bg-white/30 dark:bg-default-800/30";
+        colorStyle = "bg-white/30 dark:bg-default-800/30";
         break;
     }
   } else {
-    colorStyle =
-      "bg-white/30 dark:bg-default-800/30";
+    colorStyle = "bg-white/30 dark:bg-default-800/30";
   }
 
   return colorStyle;
 }
 
-function getHoverSoftColor(color?: "default" | "primary" | "secondary") : string {
+function getHoverSoftColor(
+  color?: "default" | "primary" | "secondary",
+): string {
   let colorStyle: string = "";
   if (color) {
     switch (color) {
@@ -207,8 +217,7 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
   if (color) {
     switch (color) {
       case "default":
-        finalColor =
-          "border-default-800 dark:border-default-200";
+        finalColor = "border-default-800 dark:border-default-200";
         break;
       case "primary":
         finalColor = "border-primary-500";
@@ -217,13 +226,11 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
         finalColor = "border-secondary-500";
         break;
       default:
-        finalColor =
-          "border-default-800 dark:border-default-200";
+        finalColor = "border-default-800 dark:border-default-200";
         break;
     }
   } else {
-    finalColor =
-      "border-default-800 dark:border-default-100";
+    finalColor = "border-default-800 dark:border-default-100";
   }
 
   return finalColor + " border-2";
@@ -255,13 +262,14 @@ function getHoverBorderOnlyColor(
   return finalColor;
 }
 
-export function getDefaultColor(color?: "default" | "primary" | "secondary"): string {
+export function getDefaultColor(
+  color?: "default" | "primary" | "secondary",
+): string {
   let colorStyle: string = "";
   if (color) {
     switch (color) {
       case "default":
-        colorStyle =
-          "bg-default-100 dark:bg-default-800";
+        colorStyle = "bg-default-100 dark:bg-default-800";
         break;
       case "primary":
         colorStyle = "bg-primary-500";
@@ -270,13 +278,11 @@ export function getDefaultColor(color?: "default" | "primary" | "secondary"): st
         colorStyle = "bg-secondary-500";
         break;
       default:
-        colorStyle =
-          "bg-default-100 dark:bg-default-800";
+        colorStyle = "bg-default-100 dark:bg-default-800";
         break;
     }
   } else {
-    colorStyle =
-      "bg-default-100 dark:bg-default-800";
+    colorStyle = "bg-default-100 dark:bg-default-800";
   }
 
   return colorStyle;

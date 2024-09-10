@@ -52,7 +52,7 @@ export function getShadow(shadow?: ShadowProps): string {
   return shadowColor + " " + shadowSize;
 }
 
-export function getHoverShadow(shadow?: ShadowProps) {
+export function getHoverShadow(shadow?: ShadowProps): string {
   let color: string = "";
   let size: string = "";
 
@@ -100,8 +100,8 @@ export function getHoverShadow(shadow?: ShadowProps) {
       size = "hover:shadow";
     }
   } else {
-    return "hover:shadow";
+    size = "hover:shadow";
   }
 
-  return size + " " + color;
+  return size + " " + color + " transition-colors duration-300";
 }
