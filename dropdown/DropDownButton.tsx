@@ -22,7 +22,7 @@ export default function DropDownButton(props: DropDownButtonProps) {
   }
 
   return (
-    <div id={props.id} className="w-fit h-fit">
+    <div id={props.id} className="w-full flex justify-center h-fit">
       <Button
         className={props.className}
         radius={props.radius}

@@ -6,10 +6,7 @@ interface DropDownProps extends BasicProps {
 
 export default function DropDown(props: DropDownProps) {
   return (
-    <div
-      id={props.id}
-      className={"w-fit h-fit block relative " + props.className}
-    >
+    <div id={props.id} className={"w-fit h-fit relative " + props.className}>
       {props.children}
     </div>
   );

@@ -48,28 +48,47 @@ export function getColor(
       : getDefaultColor(color);
   }
 
-  if (color) {
+  if (color && variant !== "blur" && variant !== "soft") {
     switch (color) {
       case "default":
-        style += " text-black dark:text-white";
+        if (variant === "borderonly") {
+          style += " text-default-800 dark:text-default-100";
+          if (hasHoverEffect)
+            style += " hover:text-default-700 dark:hover:text-default-300";
+        } else style += " text-black dark:text-white";
         break;
       case "primary":
-        style += " text-white";
+        if (variant === "borderonly") {
+          style += " text-primary-500";
+          if (hasHoverEffect) style += " hover:text-primary-400";
+        } else style += " text-white";
         break;
       case "secondary":
-        style += " text-white";
+        if (variant === "borderonly") {
+          style += " text-secondary-500";
+          if (hasHoverEffect) style += " hover:text-secondary-400";
+        } else style += " text-white";
         break;
       default:
-        style += " text-black dark:text-white";
+        if (variant === "borderonly") {
+          style += " text-default-800 dark:text-default-100";
+          if (hasHoverEffect)
+            style += " hover:text-default-700 dark:hover:text-default-300";
+        } else style += " text-black dark:text-white";
         break;
     }
-  } else {
+  } else if (variant === "blur" || variant === "soft") {
     style += " text-black dark:text-white";
+  } else {
+    if (variant === "borderonly") {
+      style += " text-default-800 dark:text-default-100";
+      if (hasHoverEffect)
+        style += " hover:text-default-700 dark:hover:text-default-300";
+    } else style += " text-black dark:text-white";
   }
 
   return style;
 }
-
 export function getHoverColor(
   color?: "default" | "primary" | "secondary",
   variant?: "default" | "borderonly" | "blur" | "soft",
@@ -243,7 +262,7 @@ function getHoverBorderOnlyColor(
   if (color) {
     switch (color) {
       case "default":
-        finalColor = "dark:hover:border-default-200 hover:border-default-700";
+        finalColor = "dark:hover:border-default-300 hover:border-default-700";
         break;
       case "primary":
         finalColor = "hover:border-primary-400";
@@ -252,11 +271,11 @@ function getHoverBorderOnlyColor(
         finalColor = "hover:border-secondary-400";
         break;
       default:
-        finalColor = "dark:hover:border-default-200 hover:border-default-700";
+        finalColor = "dark:hover:border-default-300 hover:border-default-700";
         break;
     }
   } else {
-    finalColor = "dark:hover:border-default-200 hover:border-default-700";
+    finalColor = "dark:hover:border-default-300 hover:border-default-700";
   }
 
   return finalColor;
