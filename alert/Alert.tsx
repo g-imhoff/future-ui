@@ -7,7 +7,6 @@ import { getShadow } from "../shadow";
 interface AlertProps extends ComponentsProps {
   type?: "failed" | "success" | "warning";
   text: string;
-  size?: "xl" | "lg" | "md" | "base" | "sm";
   svg: any;
   svgAlt: string;
   svgClose: any;
@@ -43,44 +42,12 @@ function getAlertType(type?: string): string {
   return color;
 }
 
-function getAlertSize(size?: "xl" | "lg" | "md" | "base" | "sm"): string {
-  let finalSize: string = "";
-
-  if (size) {
-    switch (size) {
-      case "xl":
-        finalSize = "w-full";
-        break;
-      case "lg":
-        finalSize = "w-3/4";
-        break;
-      case "md":
-        finalSize = "w-1/2";
-        break;
-      case "base":
-        finalSize = "w-1/3";
-        break;
-      case "sm":
-        finalSize = "w-1/4";
-        break;
-      default:
-        finalSize = "w-1/3";
-        break;
-    }
-  } else {
-    finalSize = "w-1/3";
-  }
-
-  return finalSize;
-}
-
 function getAlertStyle(props: AlertProps) {
   const type: string = getAlertType(props.type);
-  const size: string = getAlertSize(props.size);
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
 
-  return type + " " + size + " " + radius + " " + shadow;
+  return type + " " + radius + " " + shadow;
 }
 
 export default function Alert(props: AlertProps) {

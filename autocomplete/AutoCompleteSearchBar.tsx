@@ -2,11 +2,9 @@ import { getColor } from "../color";
 import { ColoredComponentsProps } from "../components";
 import { getRadius } from "../radius";
 import { getShadow } from "../shadow";
-import { getAutoCompleteSize } from "./AutoComplete";
 
 interface AutoCompleteSearchBarProps extends ColoredComponentsProps {
   placeholder?: string;
-  size?: "full" | "lg" | "md" | "base" | "sm";
   color?: "default" | "primary" | "secondary";
   value: string;
   setValue(e: string): void;
@@ -23,27 +21,25 @@ function getAutoCompleteSearchBarStyle(
     props.variant,
     props.blurProps,
   );
-  const size: string = getAutoCompleteSize(props.size);
 
-  return radius + " " + shadow + " " + bgColor + " " + size;
+  return radius + " " + shadow + " " + bgColor;
 }
 
 export default function AutoCompleteSearchBar(
   props: AutoCompleteSearchBarProps,
-) {
-  const style: string =
-    getAutoCompleteSize(props.size) +
-    " " +
-    getAutoCompleteSearchBarStyle(props);
+): JSX.Element {
+  const style: string = getAutoCompleteSearchBarStyle(props);
 
   return (
-    <div id={props.id} className="peer flex justify-center items-center">
+    <div id={props.id} className="w-full h-fit peer">
       <label htmlFor="AutoCompleteSearchBar"></label>
       <input
         placeholder={props.placeholder}
         className={
-          "h-8 px-4 mx-2 placeholder:text-sm outline-none placeholder:subpixel-antialiased " +
-          style
+          "h-8 px-4 placeholder:text-sm outline-none placeholder:subpixel-antialiased " +
+          style +
+          " " +
+          props.className
         }
         value={props.value}
         onChange={(e) => props.setValue(e.target.value)}
