@@ -53,7 +53,7 @@ export function getHoverColor(
   }
 }
 
-function getSoftColor(color?: "default" | "primary" | "secondary") : string {
+export function getSoftColor(color?: "default" | "primary" | "secondary") : string {
   let colorStyle: string = "";
   if (color) {
     switch (color) {
@@ -104,7 +104,7 @@ function getHoverSoftColor(color?: "default" | "primary" | "secondary") : string
   return colorStyle;
 }
 
-function getBlur(props?: BlurProps): string {
+export function getBlur(props?: BlurProps): string {
   let blurSize: string = "";
   let saturation: string = "";
   if (props) {
@@ -227,7 +227,7 @@ function getHoverBorderOnlyColor(
   return finalColor;
 }
 
-function getDefaultColor(color?: "default" | "primary" | "secondary"): string {
+export function getDefaultColor(color?: "default" | "primary" | "secondary"): string {
   let colorStyle: string = "";
   if (color) {
     switch (color) {
