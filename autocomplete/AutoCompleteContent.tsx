@@ -2,12 +2,10 @@ import { getColor } from "../color";
 import { ColoredComponentsProps } from "../components";
 import { getRadius } from "../radius";
 import { getShadow } from "../shadow";
-import { getAutoCompleteSize } from "./AutoComplete";
 import "./style.css";
 
 interface AutoCompleteContentProps extends ColoredComponentsProps {
   color?: "default" | "primary" | "secondary";
-  size?: "full" | "lg" | "md" | "base" | "sm";
   children: React.ReactNode;
 }
 
@@ -15,14 +13,13 @@ function getAutoCompleteContentStyle(props: AutoCompleteContentProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
   const bgColor: string = getColor(
-    props.hasHoverEffect,
+    false,
     props.color,
     props.variant,
     props.blurProps,
   );
-  const size: string = getAutoCompleteSize(props.size);
 
-  return radius + " " + shadow + " " + bgColor + " " + size;
+  return radius + " " + shadow + " " + bgColor;
 }
 
 export default function AutoCompleteContent(props: AutoCompleteContentProps) {
