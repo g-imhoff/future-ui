@@ -1,4 +1,5 @@
 import { BasicProps } from "../components";
+import "../position.css";
 
 interface AutoCompleteProps extends BasicProps {
   children: React.ReactNode;
@@ -6,7 +7,7 @@ interface AutoCompleteProps extends BasicProps {
 
 export default function AutoComplete(props: AutoCompleteProps) {
   return (
-    <div id={props.id} className={"h-fit px-4 relative " + props.className}>
+    <div id={props.id} className={"h-fit relative " + props.className}>
       {props.children}
     </div>
   );

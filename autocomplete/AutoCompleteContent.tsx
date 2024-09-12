@@ -1,12 +1,15 @@
 import { getColor } from "../color";
 import { ColoredComponentsProps } from "../components";
+import { AbsolutePositionProps } from "../position";
 import { getRadius } from "../radius";
 import { getShadow } from "../shadow";
 import "./style.css";
+import "../animation.css";
 
 interface AutoCompleteContentProps extends ColoredComponentsProps {
   color?: "default" | "primary" | "secondary";
   children: React.ReactNode;
+  position?: AbsolutePositionProps;
 }
 
 function getAutoCompleteContentStyle(props: AutoCompleteContentProps): string {
@@ -24,15 +27,18 @@ function getAutoCompleteContentStyle(props: AutoCompleteContentProps): string {
 
 export default function AutoCompleteContent(props: AutoCompleteContentProps) {
   const style: string = getAutoCompleteContentStyle(props);
+  const position: string = props.position ? props.position : "bottom-center";
 
   return (
     <ul
       id={props.id}
       className={
-        "hidden hover:AutoCompleteContentShow peer-has-[:focus]:AutoCompleteContentShow h-fit absolute mt-4 p-2 " +
+        "AutoCompleteContentHidden hover:AutoCompleteContentShow peer-has-[:focus]:AutoCompleteContentShow h-fit absolute p-2 " +
         style +
         " " +
-        props.className
+        props.className +
+        " " +
+        position
       }
     >
       {props.children}
