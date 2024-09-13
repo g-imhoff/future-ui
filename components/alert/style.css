@@ -1,0 +1,399 @@
+@tailwind components;
+
+@layer components {
+  .Alert {
+    position: absolute;
+  }
+
+  .alertDynamicShowTopLeft {
+    @apply Alert;
+
+    top: 0;
+    left: 0;
+
+    -webkit-animation: dynamicShowLeft 0.3s linear;
+    -moz-animation: dynamicShowLeft 0.3s linear;
+    -o-animation: dynamicShowLeft 0.3s linear;
+    animation: dynamicShowLeft 0.3s linear;
+  }
+
+  .alertDynamicHideTopLeft {
+    @apply Alert;
+
+    visibility: hidden;
+
+    top: 0;
+    left: 0;
+
+    -webkit-animation: dynamicHideLeft 0.3s linear;
+    -moz-animation: dynamicHideLeft 0.3s linear;
+    -o-animation: dynamicHideLeft 0.3s linear;
+    animation: dynamicHideLeft 0.3s linear;
+  }
+
+  .alertDynamicShowTopRight {
+    @apply Alert;
+
+    top: 0;
+    right: 0;
+
+    -webkit-animation: dynamicShowRight 0.3s linear;
+    -moz-animation: dynamicShowRight 0.3s linear;
+    -o-animation: dynamicShowRight 0.3s linear;
+    animation: dynamicShowRight 0.3s linear;
+  }
+
+  .alertDynamicHideTopRight {
+    @apply Alert;
+
+    visibility: hidden;
+
+    top: 0;
+    right: 0;
+
+    -webkit-animation: dynamicHideRight 0.3s linear;
+    -moz-animation: dynamicHideRight 0.3s linear;
+    -o-animation: dynamicHideRight 0.3s linear;
+    animation: dynamicHideRight 0.3s linear;
+  }
+
+  .alertDynamicShowBottomLeft {
+    @apply Alert;
+
+    bottom: 0;
+    left: 0;
+
+    -webkit-animation: dynamicShowLeft 0.3s linear;
+    -moz-animation: dynamicShowLeft 0.3s linear;
+    -o-animation: dynamicShowLeft 0.3s linear;
+    animation: dynamicShowLeft 0.3s linear;
+  }
+
+  .alertDynamicHideBottomLeft {
+    @apply Alert;
+
+    visibility: hidden;
+
+    bottom: 0;
+    left: 0;
+
+    -webkit-animation: dynamicHideLeft 0.3s linear;
+    -moz-animation: dynamicHideLeft 0.3s linear;
+    -o-animation: dynamicHideLeft 0.3s linear;
+    animation: dynamicHideLeft 0.3s linear;
+  }
+
+  .alertDynamicShowBottomRight {
+    @apply Alert;
+
+    bottom: 0;
+    right: 0;
+
+    -webkit-animation: dynamicShowRight 0.3s linear;
+    -moz-animation: dynamicShowRight 0.3s linear;
+    -o-animation: dynamicShowRight 0.3s linear;
+    animation: dynamicShowRight 0.3s linear;
+  }
+
+  .alertDynamicHideBottomRight {
+    @apply Alert;
+
+    visibility: hidden;
+
+    bottom: 0;
+    right: 0;
+
+    -webkit-animation: dynamicHideRight 0.3s linear;
+    -moz-animation: dynamicHideRight 0.3s linear;
+    -o-animation: dynamicHideRight 0.3s linear;
+    animation: dynamicHideRight 0.3s linear;
+  }
+}
+
+@keyframes dynamicShowLeft {
+  0% {
+    transform: translate(-100%);
+  }
+
+  50% {
+    transform: translate(-50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes dynamicHideLeft {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(-50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(-100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(-100%);
+  }
+}
+
+@-o-keyframes dynamicShowLeft {
+  0% {
+    transform: translate(-100%);
+  }
+
+  50% {
+    transform: translate(-50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@-o-keyframes dynamicHideLeft {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(-50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(-100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(-100%);
+  }
+}
+
+@-moz-keyframes dynamicShowLeft {
+  0% {
+    transform: translate(-100%);
+  }
+
+  50% {
+    transform: translate(-50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@-moz-keyframes dynamicHideLeft {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(-50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(-100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(-100%);
+  }
+}
+
+@-webkit-keyframes dynamicShowLeft {
+  0% {
+    transform: translate(-100%);
+  }
+
+  50% {
+    transform: translate(-50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@-webkit-keyframes dynamicHideLeft {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(-50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(-100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(-100%);
+  }
+}
+
+@keyframes dynamicShowRight {
+  0% {
+    transform: translate(100%);
+  }
+
+  50% {
+    transform: translate(50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes dynamicHideRight {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(100%);
+  }
+}
+
+@-o-keyframes dynamicShowRight {
+  0% {
+    transform: translate(100%);
+  }
+
+  50% {
+    transform: translate(50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@-o-keyframes dynamicHideRight {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(100%);
+  }
+}
+
+@-moz-keyframes dynamicShowRight {
+  0% {
+    transform: translate(100%);
+  }
+
+  50% {
+    transform: translate(50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@-moz-keyframes dynamicHideRight {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(100%);
+  }
+}
+
+@-webkit-keyframes dynamicShowRight {
+  0% {
+    transform: translate(100%);
+  }
+
+  50% {
+    transform: translate(50%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@-webkit-keyframes dynamicHideRight {
+  0% {
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  50% {
+    visibility: visible;
+    transform: translate(50%);
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate(100%);
+  }
+
+  100% {
+    visibility: hidden;
+    transform: translate(100%);
+  }
+}

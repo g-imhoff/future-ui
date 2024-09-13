@@ -1,4 +1,4 @@
-import { ShadowProps } from "./components";
+import { ShadowProps } from "../components";
 
 export function getShadow(shadow?: ShadowProps): string {
   let shadowColor: string = "";

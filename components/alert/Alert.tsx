@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { ComponentsProps } from "../components";
+import { ComponentsProps } from "../../components";
 import "./style.css";
-import { getRadius } from "../radius";
-import { getShadow } from "../shadow";
+import { getRadius } from "../../src/radius";
+import { getShadow } from "../../src/shadow";
 
 interface AlertProps extends ComponentsProps {
   type?: "failed" | "success" | "warning";

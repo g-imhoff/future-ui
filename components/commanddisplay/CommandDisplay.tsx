@@ -1,7 +1,7 @@
-import { getBlur, getDefaultColor, getSoftColor } from "../color";
-import { BlurProps, ComponentsProps } from "../components";
-import { getRadius } from "../radius";
-import { getShadow } from "../shadow";
+import { getBlur, getDefaultColor, getSoftColor } from "../../src/color";
+import { BlurProps, ComponentsProps } from "../../components";
+import { getRadius } from "../../src/radius";
+import { getShadow } from "../../src/shadow";
 
 interface CommandDisplayProps extends ComponentsProps {
   command: string;

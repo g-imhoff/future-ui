@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BasicProps } from "../components";
+import { BasicProps } from "../../components";
 
 interface DropDownItem extends BasicProps {
   href: string;

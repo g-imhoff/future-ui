@@ -1,28 +1,29 @@
+import { useId } from "react";
 import Button, { ButtonProps } from "../button/Button";
 
-interface DropDownButtonProps extends ButtonProps {
-  displayedId: string;
-}
+interface DropDownButtonProps extends ButtonProps {}
 
 export default function DropDownButton(props: DropDownButtonProps) {
+  const id: string = props.id ? props.id : useId();
+
   function displayDropDownContent(
     e?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
-    const DropDownContent = document.getElementById(props.displayedId);
+    const DropDownContent = document.getElementById(id);
 
-    if (DropDownContent?.classList.contains("DropDownContentHidden")) {
-      DropDownContent?.classList.remove("DropDownContentHidden");
-      DropDownContent?.classList.add("DropDownContentShow");
+    if (DropDownContent?.classList.contains("dynamicShow")) {
+      DropDownContent?.classList.remove("dynamicShow");
+      DropDownContent?.classList.add("dynamicHide");
     } else {
-      DropDownContent?.classList.remove("DropDownContentShow");
-      DropDownContent?.classList.add("DropDownContentHidden");
+      DropDownContent?.classList.remove("dynamicHide");
+      DropDownContent?.classList.add("dynamicShow");
     }
 
     props.onClick(e);
   }
 
   return (
-    <div id={props.id} className="w-full flex justify-center h-fit">
+    <div id={id} className="peer w-fit h-fit dynamicHide">
       <Button
         className={props.className}
         radius={props.radius}

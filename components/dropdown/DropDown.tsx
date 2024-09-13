@@ -1,4 +1,6 @@
-import { BasicProps } from "../components";
+import { BasicProps } from "../../components";
+import "../../src/style/position.css";
+import "../../src/style/animation.css";
 
 interface DropDownProps extends BasicProps {
   children: React.ReactNode;
