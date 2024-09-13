@@ -1,5 +1,61 @@
 @tailwind components;
 
+@layer components {
+  .DynamicContentHidden {
+    visibility: hidden;
+
+    -webkit-animation: fadeOutToNone 0.2s ease-in-out;
+    -moz-animation: fadeOutToNone 0.2s ease-in-out;
+    -o-animation: fadeOutToNone 0.2s ease-in-out;
+    animation: fadeOutToNone 0.2s ease-in-out;
+  }
+
+  .DynamicContentShow {
+    visibility: visible;
+
+    -webkit-animation: fadeInFromNone 0.2s ease-in-out;
+    -moz-animation: fadeInFromNone 0.2s ease-in-out;
+    -o-animation: fadeInFromNone 0.2s ease-in-out;
+    animation: fadeInFromNone 0.2s ease-in-out;
+  }
+
+  .DynamicContentHiddenCenter {
+    visibility: hidden;
+
+    -webkit-animation: fadeOutToNoneCenter 0.2s ease-in-out;
+    -moz-animation: fadeOutToNoneCenter 0.2s ease-in-out;
+    -o-animation: fadeOutToNoneCenter 0.2s ease-in-out;
+    animation: fadeOutToNoneCenter 0.2s ease-in-out;
+  }
+
+  .DynamicContentShowCenter {
+    visibility: visible;
+
+    -webkit-animation: fadeInFromNoneCenter 0.2s ease-in-out;
+    -moz-animation: fadeInFromNoneCenter 0.2s ease-in-out;
+    -o-animation: fadeInFromNoneCenter 0.2s ease-in-out;
+    animation: fadeInFromNoneCenter 0.2s ease-in-out;
+  }
+
+  .DynamicContentHiddenMiddle {
+    visibility: hidden;
+
+    -webkit-animation: fadeOutToNoneMiddle 0.2s ease-in-out;
+    -moz-animation: fadeOutToNoneMiddle 0.2s ease-in-out;
+    -o-animation: fadeOutToNoneMiddle 0.2s ease-in-out;
+    animation: fadeOutToNoneMiddle 0.2s ease-in-out;
+  }
+
+  .DynamicContentShowMiddle {
+    visibility: visible;
+
+    -webkit-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
+    -moz-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
+    -o-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
+    animation: fadeInFromNoneMiddle 0.2s ease-in-out;
+  }
+}
+
 // fadeInFromNoneCenter : 
 @-webkit-keyframes fadeInFromNoneCenter {
   0% {
@@ -627,61 +683,5 @@
     visibility: hidden;
     opacity: 0;
     transform: scale(0);
-  }
-}
-
-@layer components {
-  .DynamicContentHidden {
-    visibility: hidden;
-
-    -webkit-animation: fadeOutToNone 0.2s ease-in-out;
-    -moz-animation: fadeOutToNone 0.2s ease-in-out;
-    -o-animation: fadeOutToNone 0.2s ease-in-out;
-    animation: fadeOutToNone 0.2s ease-in-out;
-  }
-
-  .DynamicContentShow {
-    visibility: visible;
-
-    -webkit-animation: fadeInFromNone 0.2s ease-in-out;
-    -moz-animation: fadeInFromNone 0.2s ease-in-out;
-    -o-animation: fadeInFromNone 0.2s ease-in-out;
-    animation: fadeInFromNone 0.2s ease-in-out;
-  }
-
-  .DynamicContentHiddenCenter {
-    visibility: hidden;
-
-    -webkit-animation: fadeOutToNoneCenter 0.2s ease-in-out;
-    -moz-animation: fadeOutToNoneCenter 0.2s ease-in-out;
-    -o-animation: fadeOutToNoneCenter 0.2s ease-in-out;
-    animation: fadeOutToNoneCenter 0.2s ease-in-out;
-  }
-
-  .DynamicContentShowCenter {
-    visibility: visible;
-
-    -webkit-animation: fadeInFromNoneCenter 0.2s ease-in-out;
-    -moz-animation: fadeInFromNoneCenter 0.2s ease-in-out;
-    -o-animation: fadeInFromNoneCenter 0.2s ease-in-out;
-    animation: fadeInFromNoneCenter 0.2s ease-in-out;
-  }
-
-  .DynamicContentHiddenMiddle {
-    visibility: hidden;
-
-    -webkit-animation: fadeOutToNoneMiddle 0.2s ease-in-out;
-    -moz-animation: fadeOutToNoneMiddle 0.2s ease-in-out;
-    -o-animation: fadeOutToNoneMiddle 0.2s ease-in-out;
-    animation: fadeOutToNoneMiddle 0.2s ease-in-out;
-  }
-
-  .DynamicContentShowMiddle {
-    visibility: visible;
-
-    -webkit-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
-    -moz-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
-    -o-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
-    animation: fadeInFromNoneMiddle 0.2s ease-in-out;
   }
 }

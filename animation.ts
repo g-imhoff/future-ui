@@ -2,30 +2,30 @@ import { AbsolutePositionProps } from "./position";
 
 export function getHideDynamicAbsolutePosition(
   position: AbsolutePositionProps,
-  prefixHide: string,
+  normal: string,
+  center: string,
+  middle: string,
 ): string {
-  let result: string = prefixHide + "DynamicContentHidden";
-
   if (position === "bottom-center" || position === "top-center") {
-    result = prefixHide + "DynamicContentHiddenCenter";
+    return center;
   } else if (position === "left-middle" || position === "right-middle") {
-    result = prefixHide + "DynamicContentHiddenMiddle";
+    return middle;
   }
 
-  return result;
+  return normal;
 }
 
 export function getShowDynamicAbsolutePosition(
   position: AbsolutePositionProps,
-  prefixShow: string,
+  normal: string,
+  center: string,
+  middle: string,
 ): string {
-  let result: string = prefixShow + "DynamicContentShow";
-
   if (position === "bottom-center" || position === "top-center") {
-    result = prefixShow + "DynamicContentShowCenter";
+    return center;
   } else if (position === "left-middle" || position === "right-middle") {
-    result = prefixShow + "DynamicContentShowMiddle";
+    return middle;
   }
 
-  return result;
+  return normal;
 }

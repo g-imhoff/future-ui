@@ -7,7 +7,6 @@ import {
   getShowDynamicAbsolutePosition,
   getHideDynamicAbsolutePosition,
 } from "../animation";
-import "../position.css";
 import "../animation.css";
 
 interface AutoCompleteContentProps extends ColoredComponentsProps {
@@ -28,13 +27,18 @@ function getAutoCompleteContentStyle(props: AutoCompleteContentProps): string {
   const position: AbsolutePositionProps = props.position
     ? props.position
     : "bottom-center";
+
   const showDynamicPosition: string = getShowDynamicAbsolutePosition(
     position,
-    "peer-[.focus]:",
+    "peer-[.focus]:DynamicContentShow",
+    "peer-[.focus]:DynamicContentShowCenter",
+    "peer-[.focus]:DynamicContentShowMiddle",
   );
   const hideDynamicPosition: string = getHideDynamicAbsolutePosition(
     position,
-    "peer-[.notfocus]:",
+    "peer-[.notfocus]:DynamicContentHidden",
+    "peer-[.notfocus]:DynamicContentHiddenCenter",
+    "peer-[.notfocus]:DynamicContentHiddenMiddle",
   );
 
   return (

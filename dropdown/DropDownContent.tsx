@@ -31,12 +31,17 @@ function getDropDownContentStyle(props: DropDownContentProps): string {
 
   const showDynamicPosition: string = getShowDynamicAbsolutePosition(
     position,
-    "peer-[.dynamicShow]:",
+    "peer-[.dynamicShow]:DynamicContentShow",
+    "peer-[.dynamicShow]:DynamicContentShowCenter",
+    "peer-[.dynamicShow]:DynamicContentShowMiddle",
   );
   const hideDynamicPosition: string = getHideDynamicAbsolutePosition(
     position,
-    "peer-[.dynamicHide]:",
+    "peer-[.dynamicHide]:DynamicContentHidden",
+    "peer-[.dynamicHide]:DynamicContentHiddenCenter",
+    "peer-[.dynamicHide]:DynamicContentHiddenMiddle",
   );
+
   return (
     radius +
     " " +
