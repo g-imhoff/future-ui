@@ -24,15 +24,26 @@ function getAccordionStyle(props: AccordionProps): string {
 
 export default function Accordion(props: AccordionProps): JSX.Element {
   const style: string = getAccordionStyle(props);
-  const mappedChildren = Children.map(props.children, (child) => (
-    <>
-      {child}
-      <Divider orientation="vertical" />
-    </>
-  ));
+  const numberOfChildren: number = Children.count(props.children);
+  const mappedChildren = Children.map(
+    props.children,
+    (child: any, index: number): JSX.Element => (
+      <>
+        {child}
+        {index !== numberOfChildren - 1 && (
+          <Divider orientation="horizontal" className="w-11/12" />
+        )}
+      </>
+    ),
+  );
 
   return (
-    <div id={props.id} className={"h-fit " + props.className + " " + style}>
+    <div
+      id={props.id}
+      className={
+        "flex flex-col items-center h-fit " + props.className + " " + style
+      }
+    >
       {mappedChildren}
     </div>
   );
