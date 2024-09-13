@@ -2,6 +2,7 @@ import { getColor } from "../color";
 import { ColoredComponentsProps } from "../components";
 import { getRadius } from "../radius";
 import { getShadow } from "../shadow";
+import { useId } from "react";
 
 interface AutoCompleteSearchBarProps extends ColoredComponentsProps {
   placeholder?: string;
@@ -29,9 +30,30 @@ export default function AutoCompleteSearchBar(
   props: AutoCompleteSearchBarProps,
 ): JSX.Element {
   const style: string = getAutoCompleteSearchBarStyle(props);
+  const id: string = props.id ? props.id : useId();
+
+  function handleFocus(): void {
+    const element = document.getElementById(id);
+
+    if (element) {
+      if (element.classList.contains("notfocus"))
+        element.classList.remove("notfocus");
+      element.classList.add("focus");
+    }
+  }
+
+  function handleBlur(): void {
+    const element = document.getElementById(id);
+
+    if (element) {
+      if (element.classList.contains("focus"))
+        element.classList.remove("focus");
+      element.classList.add("notfocus");
+    }
+  }
 
   return (
-    <div id={props.id} className="w-full h-fit peer">
+    <div id={id} className="w-full h-fit peer notfocus">
       <label htmlFor="AutoCompleteSearchBar"></label>
       <input
         placeholder={props.placeholder}
@@ -45,6 +67,8 @@ export default function AutoCompleteSearchBar(
         onChange={(e) => props.setValue(e.target.value)}
         type="text"
         name="AutoCompleteSearchBar"
+        onFocus={(): void => handleFocus()}
+        onBlur={(): void => handleBlur()}
       />
     </div>
   );

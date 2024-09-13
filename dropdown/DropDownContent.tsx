@@ -7,12 +7,11 @@ import { AbsolutePositionProps } from "../position";
 import "../position.css";
 import "../animation.css";
 import {
-  DynamicAbsolutePositionValue,
-  getDynamicAbsolutePosition,
+  getHideDynamicAbsolutePosition,
+  getShowDynamicAbsolutePosition,
 } from "../animation";
 
 interface DropDownContentProps extends ColoredComponentsProps {
-  contentId: string;
   children: React.ReactNode;
   position?: AbsolutePositionProps;
 }
@@ -26,8 +25,31 @@ function getDropDownContentStyle(props: DropDownContentProps): string {
     props.variant,
     props.blurProps,
   );
+  const position: AbsolutePositionProps = props.position
+    ? props.position
+    : "bottom-center";
 
-  return radius + " " + shadow + " " + color;
+  const showDynamicPosition: string = getShowDynamicAbsolutePosition(
+    position,
+    "peer-[.dynamicShow]:",
+  );
+  const hideDynamicPosition: string = getHideDynamicAbsolutePosition(
+    position,
+    "peer-[.dynamicHide]:",
+  );
+  return (
+    radius +
+    " " +
+    shadow +
+    " " +
+    color +
+    " " +
+    showDynamicPosition +
+    " " +
+    hideDynamicPosition +
+    " " +
+    position
+  );
 }
 
 function getDropDownItemStyle(props: DropDownContentProps): string {
@@ -46,11 +68,6 @@ function getDropDownItemStyle(props: DropDownContentProps): string {
 export default function DropDownContent(props: DropDownContentProps) {
   const style: string = getDropDownContentStyle(props);
   const styleItem: string = getDropDownItemStyle(props);
-  const position: AbsolutePositionProps = props.position
-    ? props.position
-    : "bottom-center";
-  const dynamicPosition: DynamicAbsolutePositionValue =
-    getDynamicAbsolutePosition(position);
 
   const itemChildren = Children.map(props.children, (child) => (
     <li className={styleItem + " transition-colors duration-300 p-2"}>
@@ -59,21 +76,6 @@ export default function DropDownContent(props: DropDownContentProps) {
   ));
 
   return (
-    <ul
-      id={props.contentId}
-      className={
-        style +
-        " h-fit p-2 " +
-        props.className +
-        " " +
-        position +
-        " " +
-        dynamicPosition.show +
-        " " +
-        dynamicPosition.hide
-      }
-    >
-      {itemChildren}
-    </ul>
+    <ul className={style + " h-fit p-2 " + props.className}>{itemChildren}</ul>
   );
 }

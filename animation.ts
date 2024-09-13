@@ -1,27 +1,30 @@
 import { AbsolutePositionProps } from "./position";
 
-export interface DynamicAbsolutePositionValue {
-  show: string;
-  hide: string;
+export function getHideDynamicAbsolutePosition(
+  position: AbsolutePositionProps,
+  prefixHide: string,
+): string {
+  let result: string = prefixHide + "DynamicContentHidden";
+
+  if (position === "bottom-center" || position === "top-center") {
+    result = prefixHide + "DynamicContentHiddenCenter";
+  } else if (position === "left-middle" || position === "right-middle") {
+    result = prefixHide + "DynamicContentHiddenMiddle";
+  }
+
+  return result;
 }
 
-export function getDynamicAbsolutePosition(
+export function getShowDynamicAbsolutePosition(
   position: AbsolutePositionProps,
-): DynamicAbsolutePositionValue {
-  let result: DynamicAbsolutePositionValue = {
-    show: "peer-[.dynamicShow]:DynamicContentShow",
-    hide: "peer-[.dynamicHide]:DynamicContentHidden",
-  };
+  prefixShow: string,
+): string {
+  let result: string = prefixShow + "DynamicContentShow";
+
   if (position === "bottom-center" || position === "top-center") {
-    result = {
-      show: "peer-[.dynamicShow]:DynamicContentShowCenter",
-      hide: "peer-[.dynamicHide]:DynamicContentHiddenCenter",
-    };
+    result = prefixShow + "DynamicContentShowCenter";
   } else if (position === "left-middle" || position === "right-middle") {
-    result = {
-      show: "peer-[.dynamicShow]:DynamicContentShowMiddle",
-      hide: "peer-[.dynamicHide]:DynamicContentHiddenMiddle",
-    };
+    result = prefixShow + "DynamicContentShowMiddle";
   }
 
   return result;

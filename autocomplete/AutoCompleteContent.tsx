@@ -3,7 +3,11 @@ import { ColoredComponentsProps } from "../components";
 import { AbsolutePositionProps } from "../position";
 import { getRadius } from "../radius";
 import { getShadow } from "../shadow";
-import "./style.css";
+import {
+  getShowDynamicAbsolutePosition,
+  getHideDynamicAbsolutePosition,
+} from "../animation";
+import "../position.css";
 import "../animation.css";
 
 interface AutoCompleteContentProps extends ColoredComponentsProps {
@@ -21,25 +25,40 @@ function getAutoCompleteContentStyle(props: AutoCompleteContentProps): string {
     props.variant,
     props.blurProps,
   );
+  const position: AbsolutePositionProps = props.position
+    ? props.position
+    : "bottom-center";
+  const showDynamicPosition: string = getShowDynamicAbsolutePosition(
+    position,
+    "peer-[.focus]:",
+  );
+  const hideDynamicPosition: string = getHideDynamicAbsolutePosition(
+    position,
+    "peer-[.notfocus]:",
+  );
 
-  return radius + " " + shadow + " " + bgColor;
+  return (
+    radius +
+    " " +
+    shadow +
+    " " +
+    bgColor +
+    " " +
+    showDynamicPosition +
+    " " +
+    hideDynamicPosition +
+    " " +
+    position
+  );
 }
 
 export default function AutoCompleteContent(props: AutoCompleteContentProps) {
   const style: string = getAutoCompleteContentStyle(props);
-  const position: string = props.position ? props.position : "bottom-center";
 
   return (
     <ul
       id={props.id}
-      className={
-        "AutoCompleteContentHidden hover:AutoCompleteContentShow peer-has-[:focus]:AutoCompleteContentShow h-fit absolute p-2 " +
-        style +
-        " " +
-        props.className +
-        " " +
-        position
-      }
+      className={"h-fit absolute p-2 " + style + " " + props.className}
     >
       {props.children}
     </ul>
