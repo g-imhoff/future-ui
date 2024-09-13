@@ -2,13 +2,14 @@ import { ColoredComponentsProps } from "@/future-ui/components";
 import { getColor } from "@/future-ui/src/color";
 import { getRadius } from "@/future-ui/src/radius";
 import { getShadow } from "@/future-ui/src/shadow";
+import { Children } from "react";
+import Divider from "../divider/Divider";
 
 interface AccordionProps extends ColoredComponentsProps {
-  title: string;
-  text: string;
+  children: React.ReactNode;
 }
 
-function getAccordionStyle(props: AccordionProps) {
+function getAccordionStyle(props: AccordionProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
   const color: string = getColor(
@@ -21,13 +22,18 @@ function getAccordionStyle(props: AccordionProps) {
   return radius + " " + shadow + " " + color;
 }
 
-export default function Accordion(props: AccordionProps) {
+export default function Accordion(props: AccordionProps): JSX.Element {
   const style: string = getAccordionStyle(props);
+  const mappedChildren = Children.map(props.children, (child) => (
+    <>
+      {child}
+      <Divider orientation="vertical" />
+    </>
+  ));
 
   return (
-    <div
-      id={props.id}
-      className={"h-fit " + props.className + " " + style}
-    ></div>
+    <div id={props.id} className={"h-fit " + props.className + " " + style}>
+      {mappedChildren}
+    </div>
   );
 }
