@@ -1,7 +1,7 @@
-import { getHoverColor } from "../color";
-import { ColoredComponentsProps } from "../components";
-import { getRadius } from "../radius";
-import { getHoverShadow } from "../shadow";
+import { getHoverColor } from "../../src/color";
+import { ColoredComponentsProps } from "../../components";
+import { getRadius } from "../../src/radius";
+import { getHoverShadow } from "../../src/shadow";
 
 interface AutoCompleteItemsProps extends ColoredComponentsProps {
   text: string;

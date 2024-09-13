@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { ButtonProps } from "./Button";
-import { getRadius } from "../radius";
-import { getShadow } from "../shadow";
-import { getColor } from "../color";
+import { getRadius } from "../../src/radius";
+import { getShadow } from "../../src/shadow";
+import { getColor } from "../../src/color";
 
 export interface IconButtonProps extends ButtonProps {
   svg: any;

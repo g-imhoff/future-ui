@@ -1,12 +1,12 @@
-import { getColor } from "../color";
-import { ColoredComponentsProps } from "../components";
-import { AbsolutePositionProps } from "../position";
-import { getRadius } from "../radius";
-import { getShadow } from "../shadow";
+import { getColor } from "../../src/color";
+import { ColoredComponentsProps } from "../../components";
+import { AbsolutePositionProps } from "../../src/position";
+import { getRadius } from "../../src/radius";
+import { getShadow } from "../../src/shadow";
 import {
   getShowDynamicAbsolutePosition,
   getHideDynamicAbsolutePosition,
-} from "../position";
+} from "../../src/position";
 
 interface AutoCompleteContentProps extends ColoredComponentsProps {
   color?: "default" | "primary" | "secondary";

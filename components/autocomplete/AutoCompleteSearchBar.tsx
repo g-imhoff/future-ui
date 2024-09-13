@@ -1,7 +1,7 @@
-import { getColor } from "../color";
-import { ColoredComponentsProps } from "../components";
-import { getRadius } from "../radius";
-import { getShadow } from "../shadow";
+import { getColor } from "../../src/color";
+import { ColoredComponentsProps } from "../../components";
+import { getRadius } from "../../src/radius";
+import { getShadow } from "../../src/shadow";
 import { useId } from "react";
 
 interface AutoCompleteSearchBarProps extends ColoredComponentsProps {

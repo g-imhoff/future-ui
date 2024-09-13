@@ -1,4 +1,4 @@
-import { BlurProps } from "./components";
+import { BlurProps } from "../components";
 
 export function getColor(
   hasHoverEffect: boolean | undefined,

@@ -1,13 +1,13 @@
 import { Children } from "react";
-import { ColoredComponentsProps } from "../components";
-import { getRadius } from "../radius";
-import { getShadow, getHoverShadow } from "../shadow";
-import { getColor, getHoverColor } from "../color";
-import { AbsolutePositionProps } from "../position";
+import { ColoredComponentsProps } from "../../components";
+import { getRadius } from "../../src/radius";
+import { getShadow, getHoverShadow } from "../../src/shadow";
+import { getColor, getHoverColor } from "../../src/color";
 import {
+  AbsolutePositionProps,
   getShowDynamicAbsolutePosition,
   getHideDynamicAbsolutePosition,
-} from "../position";
+} from "../../src/position";
 
 interface DropDownContentProps extends ColoredComponentsProps {
   children: React.ReactNode;
