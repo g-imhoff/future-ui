@@ -1,5 +1,6 @@
 import { BasicProps } from "../components";
 import "../position.css";
+import "../animation.css";
 
 interface AutoCompleteProps extends BasicProps {
   children: React.ReactNode;

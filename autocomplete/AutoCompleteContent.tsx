@@ -6,8 +6,7 @@ import { getShadow } from "../shadow";
 import {
   getShowDynamicAbsolutePosition,
   getHideDynamicAbsolutePosition,
-} from "../animation";
-import "../animation.css";
+} from "../position";
 
 interface AutoCompleteContentProps extends ColoredComponentsProps {
   color?: "default" | "primary" | "secondary";
