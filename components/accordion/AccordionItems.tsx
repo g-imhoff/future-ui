@@ -5,7 +5,6 @@ import "../../src/style/animation.css";
 interface AccordionItemsProps {
   title: string;
   text: string;
-  altChevron?: string;
 }
 
 export default function AccordionItems(
