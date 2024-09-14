@@ -54,8 +54,26 @@
     -o-animation: fadeInFromNoneMiddle 0.2s ease-in-out;
     animation: fadeInFromNoneMiddle 0.2s ease-in-out;
   }
+
+  .TopApparitionHidden {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition:
+      grid-template-rows 0.3s linear,
+      padding 0.3s linear;
+  }
+
+  .TopApparitionShow {
+    display: grid;
+    grid-template-rows: 1fr;
+    padding-top: 1rem;
+    transition:
+      grid-template-rows 0.3s linear,
+      padding 0.3s linear;
+  }
 }
 
+//made for DynamicContent
 // fadeInFromNoneCenter : 
 @-webkit-keyframes fadeInFromNoneCenter {
   0% {

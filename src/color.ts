@@ -231,7 +231,9 @@ export function getBlur(props?: BlurProps): string {
   return blurSize + " text-black dark:text-white " + saturation;
 }
 
-function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
+export function getBorderOnlyColor(
+  color?: "default" | "primary" | "secondary",
+) {
   let finalColor: string = "";
   if (color) {
     switch (color) {
@@ -252,7 +254,7 @@ function getBorderOnlyColor(color?: "default" | "primary" | "secondary") {
     finalColor = "border-default-800 dark:border-default-100";
   }
 
-  return finalColor + " border-2";
+  return finalColor;
 }
 
 function getHoverBorderOnlyColor(
