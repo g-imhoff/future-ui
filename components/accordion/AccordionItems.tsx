@@ -1,6 +1,5 @@
 import { useId } from "react";
-import Image from "next/image";
-import Chevron from "../../src/svg/chevron-left.svg";
+import { ChevronLeft } from "../../src/svg/chevron-left";
 
 interface AccordionItemsProps {
   title: string;
@@ -12,20 +11,27 @@ export default function AccordionItems(
   props: AccordionItemsProps,
 ): JSX.Element {
   const sectionId: string = useId();
-  const chevronAlt: string = props.altChevron
-    ? props.altChevron
-    : "the chevron button";
+  const chevronId: string = useId();
 
   function showSection(): void {
-    const element = document.getElementById(sectionId);
+    const section = document.getElementById(sectionId);
+    const chevron = document.getElementById(chevronId);
 
-    if (element?.classList) {
-      if (element.classList.contains("hidden")) {
-        element.classList.add("block");
-        element.classList.remove("hidden");
+    if (section?.classList) {
+      if (section.classList.contains("hidden")) {
+        section.classList.add("block");
+        section.classList.remove("hidden");
       } else {
-        element.classList.add("hidden");
-        element.classList.remove("block");
+        section.classList.add("hidden");
+        section.classList.remove("block");
+      }
+    }
+
+    if (chevron?.classList) {
+      if (chevron.classList.contains("-rotate-90")) {
+        chevron.classList.remove("-rotate-90");
+      } else {
+        chevron.classList.add("-rotate-90");
       }
     }
   }
@@ -37,9 +43,12 @@ export default function AccordionItems(
         onClick={showSection}
       >
         <h2>{props.title}</h2>
-        <Image src={Chevron} alt={chevronAlt} />
+        <ChevronLeft
+          id={chevronId}
+          className="w-6 fill-none stroke-default-500 stroke-width stroke-[1.5] transition-transform duration-300"
+        />
       </button>
-      <section id={sectionId} className="hidden">
+      <section id={sectionId} className="hidden pb-4">
         {props.text}
       </section>
     </>
