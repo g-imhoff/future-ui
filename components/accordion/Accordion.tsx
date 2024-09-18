@@ -1,7 +1,7 @@
-import { ColoredComponentsProps } from "@/future-ui/components";
-import { getColor } from "@/future-ui/src/color";
-import { getRadius } from "@/future-ui/src/radius";
-import { getShadow } from "@/future-ui/src/shadow";
+import { ColoredComponentsProps } from "../../components";
+import { getColor } from "../../src/color";
+import { getRadius } from "../../src/radius";
+import { getShadow } from "../../src/shadow";
 import { Children } from "react";
 import Divider from "../divider/Divider";
 

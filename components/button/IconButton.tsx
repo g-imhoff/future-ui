@@ -1,12 +1,14 @@
-import Image from "next/image";
-import { ButtonProps } from "./Button";
+import { BasicProps, ColoredComponentsProps } from "../../components";
 import { getRadius } from "../../src/radius";
 import { getShadow } from "../../src/shadow";
 import { getColor } from "../../src/color";
 
-export interface IconButtonProps extends ButtonProps {
-  svg: any;
-  svgBlack?: any;
+export interface IconButtonProps extends ColoredComponentsProps {
+  svg(props: BasicProps): JSX.Element;
+  svgColor: string;
+  ariaLabel: string;
+  size?: "xl" | "lg" | "base" | "sm";
+  onClick(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
@@ -18,8 +20,6 @@ function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
         return "h-12";
       case "base":
         return "h-10";
-      case "sm":
-        return "h-8";
       default:
         return "h-10";
     }
@@ -57,40 +57,15 @@ function getIconButtonStyle(props: IconButtonProps): string {
 export default function IconButton(props: IconButtonProps) {
   let style: string = getIconButtonStyle(props);
 
-  function ifSvgBlackExist() {
-    if (props.svgBlack) {
-      return (
-        <>
-          <Image
-            className="hidden dark:block aspect-square h-3/4 w-auto"
-            src={props.svg}
-            alt={props.text}
-          />
-          <Image
-            className="block dark:hidden aspect-square h-3/4 w-auto"
-            src={props.svgBlack}
-            alt={props.text}
-          />
-        </>
-      );
-    }
-
-    return (
-      <Image
-        className="aspect-square h-3/4 w-auto"
-        src={props.svg}
-        alt={props.text}
-      />
-    );
-  }
-
   return (
     <button
       aria-label={props.ariaLabel}
       onClick={(e) => props.onClick(e)}
       className={style}
     >
-      {ifSvgBlackExist()}
+      {props.svg({
+        className: "aspect-square h-3/4 w-auto " + props.svgColor,
+      })}
     </button>
   );
 }

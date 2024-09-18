@@ -1,14 +1,10 @@
 import { getBlur, getDefaultColor, getSoftColor } from "../../src/color";
-import { BlurProps, ComponentsProps } from "../../components";
+import { BlurProps, ColoredComponentsProps } from "../../components";
 import { getRadius } from "../../src/radius";
 import { getShadow } from "../../src/shadow";
 
-interface CommandDisplayProps extends ComponentsProps {
+interface CommandDisplayProps extends ColoredComponentsProps {
   command: string;
-  color?: "default" | "primary" | "secondary";
-  variant?: "default" | "soft" | "blur";
-  hasBorder?: boolean;
-  blurProps?: BlurProps;
 }
 
 function getCommandDisplayBorder(
@@ -40,7 +36,7 @@ function getCommandDisplayBorder(
 function getCommandDisplayColor(
   hasBorder?: boolean,
   color?: "default" | "primary" | "secondary",
-  variant?: "default" | "blur" | "soft",
+  variant?: "default" | "blur" | "soft" | "borderonly",
   blurProps?: BlurProps,
 ): string {
   let style: string = "";
@@ -53,12 +49,12 @@ function getCommandDisplayColor(
         break;
       case "blur":
         style = hasBorder
-          ? getBlur(blurProps) + " " + getCommandDisplayBorder()
+          ? getBlur(blurProps) + " " + getCommandDisplayBorder(color)
           : getBlur(blurProps);
         break;
       case "soft":
         style = hasBorder
-          ? getSoftColor(color) + " " + getCommandDisplayBorder()
+          ? getSoftColor(color) + " " + getCommandDisplayBorder(color)
           : getSoftColor(color);
         break;
       default:
@@ -99,7 +95,7 @@ function getCommandDisplayStyle(props: CommandDisplayProps): string {
   const radius: string = getRadius(props.radius);
   const shadow: string = getShadow(props.shadow);
   const color: string = getCommandDisplayColor(
-    props.hasBorder,
+    true,
     props.color,
     props.variant,
     props.blurProps,

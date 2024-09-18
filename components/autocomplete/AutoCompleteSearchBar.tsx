@@ -30,7 +30,8 @@ export default function AutoCompleteSearchBar(
   props: AutoCompleteSearchBarProps,
 ): JSX.Element {
   const style: string = getAutoCompleteSearchBarStyle(props);
-  const id: string = props.id ? props.id : useId();
+  const hookId: string = useId();
+  const id: string = props.id ? props.id : hookId;
 
   function handleFocus(): void {
     const element = document.getElementById(id);

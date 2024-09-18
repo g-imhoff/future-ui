@@ -66,7 +66,8 @@ function getAlertStyle(props: AlertProps) {
 }
 
 export default function Alert(props: AlertProps) {
-  const id = props.id ? props.id : useId();
+  const hookId = useId();
+  const id = props.id ? props.id : hookId;
   const style: string = getAlertStyle(props);
 
   function handleCloseAlert(

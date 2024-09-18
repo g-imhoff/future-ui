@@ -1,5 +1,4 @@
-import { BasicProps } from "@/future-ui/components";
-
+import { BasicProps } from "../../components";
 interface DividerProps extends BasicProps {
   orientation: "horizontal" | "vertical";
 }

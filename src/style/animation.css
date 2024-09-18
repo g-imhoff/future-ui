@@ -73,8 +73,6 @@
   }
 }
 
-//made for DynamicContent
-// fadeInFromNoneCenter : 
 @-webkit-keyframes fadeInFromNoneCenter {
   0% {
     visibility: hidden;
@@ -179,7 +177,6 @@
   }
 }
 
-// fadeInFromNoneMiddle:
 @-webkit-keyframes fadeInFromNoneMiddle {
   0% {
     visibility: hidden;
@@ -284,7 +281,6 @@
   }
 }
 
-// fadeInFromNone:
 @-webkit-keyframes fadeInFromNone {
   0% {
     visibility: hidden;
@@ -389,7 +385,6 @@
   }
 }
 
-//fadeOutToNoneMiddle:
 @-webkit-keyframes fadeOutToNoneMiddle {
   0% {
     visibility: visible;
@@ -494,7 +489,6 @@
   }
 }
 
-//fadeOutToNoneCenter:
 @-webkit-keyframes fadeOutToNoneCenter {
   0% {
     visibility: visible;
@@ -599,7 +593,6 @@
   }
 }
 
-//fadeOutToNone: 
 @-webkit-keyframes fadeOutToNone {
   0% {
     visibility: visible;
