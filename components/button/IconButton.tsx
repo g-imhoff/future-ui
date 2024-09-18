@@ -1,12 +1,12 @@
-import Image from "next/image";
+import { BasicProps } from "../../components";
 import { ButtonProps } from "./Button";
 import { getRadius } from "../../src/radius";
 import { getShadow } from "../../src/shadow";
 import { getColor } from "../../src/color";
 
 export interface IconButtonProps extends ButtonProps {
-  svg: any;
-  svgBlack?: any;
+  svg(props: BasicProps): JSX.Element;
+  svgBlack(props: BasicProps): JSX.Element;
 }
 
 function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
@@ -61,6 +61,7 @@ export default function IconButton(props: IconButtonProps) {
     if (props.svgBlack) {
       return (
         <>
+          {props.svg()}
           <Image
             className="hidden dark:block aspect-square h-3/4 w-auto"
             src={props.svg}

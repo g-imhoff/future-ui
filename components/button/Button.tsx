@@ -16,14 +16,19 @@ function getButtonSize(size?: string): string {
     switch (size) {
       case "xl":
         finalSize = "text-xl h-14 px-4";
+        break;
       case "lg":
         finalSize = "text-lg h-12 px-4";
+        break;
       case "base":
         finalSize = "h-10 px-4";
+        break;
       case "sm":
         finalSize = "text-sm h-8 px-3";
+        break;
       default:
         finalSize = "h-10 px-4";
+        break;
     }
   } else {
     finalSize = "h-10 px-4";
