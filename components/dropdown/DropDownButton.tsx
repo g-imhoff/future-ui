@@ -1,9 +1,7 @@
 import { useId } from "react";
 import Button, { ButtonProps } from "../button/Button";
 
-interface DropDownButtonProps extends ButtonProps {}
-
-export default function DropDownButton(props: DropDownButtonProps) {
+export default function DropDownButton(props: ButtonProps) {
   const hookId: string = useId();
   const id: string = props.id ? props.id : hookId;
 

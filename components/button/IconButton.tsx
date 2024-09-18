@@ -1,12 +1,14 @@
-import { BasicProps } from "../../components";
-import { ButtonProps } from "./Button";
+import { BasicProps, ColoredComponentsProps } from "../../components";
 import { getRadius } from "../../src/radius";
 import { getShadow } from "../../src/shadow";
 import { getColor } from "../../src/color";
 
-export interface IconButtonProps extends ButtonProps {
+export interface IconButtonProps extends ColoredComponentsProps {
   svg(props: BasicProps): JSX.Element;
-  svgBlack(props: BasicProps): JSX.Element;
+  svgColor: string;
+  ariaLabel: string;
+  size?: "xl" | "lg" | "base" | "sm";
+  onClick(e?: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
@@ -55,30 +57,15 @@ function getIconButtonStyle(props: IconButtonProps): string {
 export default function IconButton(props: IconButtonProps) {
   let style: string = getIconButtonStyle(props);
 
-  function ifSvgBlackExist() {
-    if (props.svgBlack) {
-      return (
-        <>
-          {props.svg({
-            className: "hidden dark:block aspect-square h-3/4 w-auto",
-          })}
-          {props.svgBlack({
-            className: "block dark:hidden aspect-square h-3/4 w-auto",
-          })}
-        </>
-      );
-    }
-
-    return <>{props.svg({ className: "aspect-square h-3/4 w-auto" })}</>;
-  }
-
   return (
     <button
       aria-label={props.ariaLabel}
       onClick={(e) => props.onClick(e)}
       className={style}
     >
-      {ifSvgBlackExist()}
+      {props.svg({
+        className: "aspect-square h-3/4 w-auto " + props.svgColor,
+      })}
     </button>
   );
 }

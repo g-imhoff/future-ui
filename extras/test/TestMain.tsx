@@ -1,6 +1,10 @@
 import Button from "../../components/button/Button";
 import TestAlert from "./TestAlert";
 import TestAccordion from "./TestAccordion";
+import TestAutoComplete from "./TestAutoComplete";
+import TestButton from "./TestButton";
+import TestCommandDisplay from "./TestCommandDisplay";
+import TestDropDown from "./TestDropDown";
 
 export default function TestMain() {
   function handleDarkMode() {
@@ -29,7 +33,18 @@ export default function TestMain() {
       <div className="h-screen w-screen flex justify-center items-center relative">
         <TestAlert />
       </div>
-      <div className="h-screen w-screen flex justify-center items-center"></div>
+      <div className="h-screen w-screen flex justify-center items-center">
+        <TestAutoComplete />
+      </div>
+      <div className="h-screen w-screen flex justify-around items-center">
+        <TestButton />
+      </div>
+      <div className="h-screen w-screen flex justify-around items-center">
+        <TestCommandDisplay />
+      </div>
+      <div className="h-screen w-screen flex justify-around items-center">
+        <TestDropDown hasHoverEffect={true} />
+      </div>
     </>
   );
 }

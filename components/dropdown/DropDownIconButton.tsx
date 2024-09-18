@@ -1,28 +1,28 @@
 import IconButton, { IconButtonProps } from "../button/IconButton";
+import { useId } from "react";
 
-interface DropDownIconButtonProps extends IconButtonProps {
-  displayedId: string;
-}
+export default function DropDownIconButton(props: IconButtonProps) {
+  const hookId: string = useId();
+  const id: string = props.id ? props.id : hookId;
 
-export default function DropDownIconButton(props: DropDownIconButtonProps) {
   function displayDropDownContent(
     e?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): void {
-    const DropDownContent = document.getElementById(props.displayedId);
+    const DropDownContent = document.getElementById(id);
 
-    if (DropDownContent?.classList.contains("DropDownContentHidden")) {
-      DropDownContent?.classList.remove("DropDownContentHidden");
-      DropDownContent?.classList.add("DropDownContentShow");
+    if (DropDownContent?.classList.contains("dynamicShow")) {
+      DropDownContent?.classList.remove("dynamicShow");
+      DropDownContent?.classList.add("dynamicHide");
     } else {
-      DropDownContent?.classList.remove("DropDownContentShow");
-      DropDownContent?.classList.add("DropDownContentHidden");
+      DropDownContent?.classList.remove("dynamicHide");
+      DropDownContent?.classList.add("dynamicShow");
     }
 
     props.onClick(e);
   }
 
   return (
-    <div className="w-fit h-fit">
+    <div id={id} className="peer w-fit h-fit dynamicHide">
       <IconButton
         className={props.className}
         radius={props.radius}
@@ -31,12 +31,11 @@ export default function DropDownIconButton(props: DropDownIconButtonProps) {
         variant={props.variant}
         blurProps={props.blurProps}
         hasHoverEffect={props.hasHoverEffect}
-        text={props.text}
         ariaLabel={props.ariaLabel}
         size={props.size}
         onClick={displayDropDownContent}
         svg={props.svg}
-        svgBlack={props.svgBlack}
+        svgColor={props.svgColor}
       />
     </div>
   );
