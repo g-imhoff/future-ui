@@ -18,8 +18,6 @@ function getIconButtonSize(size?: "xl" | "lg" | "base" | "sm"): string {
         return "h-12";
       case "base":
         return "h-10";
-      case "sm":
-        return "h-8";
       default:
         return "h-10";
     }
@@ -61,28 +59,17 @@ export default function IconButton(props: IconButtonProps) {
     if (props.svgBlack) {
       return (
         <>
-          {props.svg()}
-          <Image
-            className="hidden dark:block aspect-square h-3/4 w-auto"
-            src={props.svg}
-            alt={props.text}
-          />
-          <Image
-            className="block dark:hidden aspect-square h-3/4 w-auto"
-            src={props.svgBlack}
-            alt={props.text}
-          />
+          {props.svg({
+            className: "hidden dark:block aspect-square h-3/4 w-auto",
+          })}
+          {props.svgBlack({
+            className: "block dark:hidden aspect-square h-3/4 w-auto",
+          })}
         </>
       );
     }
 
-    return (
-      <Image
-        className="aspect-square h-3/4 w-auto"
-        src={props.svg}
-        alt={props.text}
-      />
-    );
+    return <>{props.svg({ className: "aspect-square h-3/4 w-auto" })}</>;
   }
 
   return (
