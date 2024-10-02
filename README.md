@@ -1,4 +1,4 @@
-# UI Kit Project
+# Future UI
 
 A customizable, component-based UI kit built using **ReactJS** and **TailwindCSS**. This project contains a variety of reusable components (like alerts, buttons, dropdowns, accordions, etc.), designed for easy integration and customization. It also includes several testing components to aid in faster development.
 
